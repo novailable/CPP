@@ -1,6 +1,6 @@
 #include "Weapon.hpp"
 
-Weapon::Weapon(std::string& type) : type(type) {}
+Weapon::Weapon(std::string type) : type(type) {}
 
 void	Weapon::setType(std::string n_type) 
 {
