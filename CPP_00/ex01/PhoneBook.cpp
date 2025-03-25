@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 03:06:27 by aoo               #+#    #+#             */
-/*   Updated: 2025/03/21 03:07:50 by aoo              ###   ########.fr       */
+/*   Updated: 2025/03/25 17:18:50 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	PhoneBook::add()
 {
 	if (_count > 7)
 	{
-		for (int i = 0; i < _count; ++i) contacts[i] = contacts[i + 1];
+		for (int i = 0; i < 7; ++i) contacts[i] = contacts[i + 1];
 		_count = 7;
 	}
 	contacts[_count].set_contact();
