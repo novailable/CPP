@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoo <aoo@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 03:06:27 by aoo               #+#    #+#             */
-/*   Updated: 2025/03/25 17:18:50 by aoo              ###   ########.fr       */
+/*   Updated: 2025/04/04 03:44:00 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook() : _count(0), _index(0) {}
+PhoneBook::PhoneBook() : _count(0) {}
 
 void	PhoneBook::add()
 {

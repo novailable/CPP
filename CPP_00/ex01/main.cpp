@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 03:06:13 by aoo               #+#    #+#             */
-/*   Updated: 2025/03/21 03:08:36 by aoo              ###   ########.fr       */
+/*   Updated: 2025/04/04 03:38:04 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	to_upper(std::string &str)
 		str[i] = std::toupper(str[i]);
 }
 
-int	main(int argc, char **argv)
+int	main()
 {
 	std::string	help = "\nADD	- save a new contact!\nSEARCH	- find a specific content!\nEXIT	- exit program!\n";
 	std::string	cmd;

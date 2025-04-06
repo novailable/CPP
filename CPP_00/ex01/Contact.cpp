@@ -6,7 +6,7 @@
 /*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 03:06:22 by aoo               #+#    #+#             */
-/*   Updated: 2025/03/21 03:06:23 by aoo              ###   ########.fr       */
+/*   Updated: 2025/04/04 03:41:26 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void    get_safe_input(std::string prompt, std::string &value)
 	}
 }
 
-void	print_setw(int width, std::string str)
+void	print_setw(size_t width, std::string str)
 {
 	std::cout << std::setw(width) << (str.length() > width ? str.substr(0, width - 1) + "." : str) << " | ";
 }
@@ -51,10 +51,10 @@ void    Contact::set_contact()
 void	Contact::show_content(int width, int index)
 {
 	std::cout << "| ";
-	print_setw(10, std::to_string(index));
-	print_setw(10, _f_name);
-	print_setw(10, _l_name);
-	print_setw(10, _n_name);
+	print_setw(width, std::to_string(index));
+	print_setw(width, _f_name);
+	print_setw(width, _l_name);
+	print_setw(width, _n_name);
 	std::cout << std::endl;
 }
 
