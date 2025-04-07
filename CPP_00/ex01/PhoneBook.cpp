@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 03:06:27 by aoo               #+#    #+#             */
-/*   Updated: 2025/04/04 03:44:00 by aoo              ###   ########.fr       */
+/*   Updated: 2025/04/07 16:54:54 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	PhoneBook::search()
 	get_safe_input("\nEnter index for detail : ", index_str);
 	try
 	{
-		index = std::stoi(index_str);
+		std::stringstream(index_str) >> index;
 		if (index > 0 && index <= _count)
 			contacts[index - 1].show_detail();
 		else

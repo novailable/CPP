@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 03:06:40 by aoo               #+#    #+#             */
-/*   Updated: 2025/04/04 03:41:44 by aoo              ###   ########.fr       */
+/*   Updated: 2025/04/07 16:52:56 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 #define	CONTACT_HPP
 
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <iomanip>
+#include <cstdlib>
 
 class	Contact 
 {

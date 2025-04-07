@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+        */
+/*   By: aoo <aoo@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 03:06:22 by aoo               #+#    #+#             */
-/*   Updated: 2025/04/04 03:41:26 by aoo              ###   ########.fr       */
+/*   Updated: 2025/04/07 16:52:15 by aoo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,12 @@ void    Contact::set_contact()
 
 void	Contact::show_content(int width, int index)
 {
+
 	std::cout << "| ";
-	print_setw(width, std::to_string(index));
+	
+	std::stringstream	ss;
+	ss << index;
+	print_setw(width, ss.str());
 	print_setw(width, _f_name);
 	print_setw(width, _l_name);
 	print_setw(width, _n_name);

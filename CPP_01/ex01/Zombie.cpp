@@ -27,12 +27,18 @@ void	randomChump(std::string name)
 
 Zombie*	zombieHorde(int N, std::string name)
 {
+	
 	if (N <= 0)
-		return nullptr;
+		return (NULL);
 
 	Zombie* horde = new Zombie[N];
+	
 
 	for (int i = 0; i < N; ++i)
-		new (&horde[i]) Zombie(name + "_" + std::to_string(i));
+	{
+		std::stringstream	ss;
+		ss << i;
+		new (&horde[i]) Zombie(name + "_" + ss.str());
+	}
 	return horde;
 }
