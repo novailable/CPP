@@ -19,6 +19,6 @@ class	Point
 		Fixed	get_y()	const;
 };
 
+std::ostream	&operator<<(std::ostream &out, const Point &point);
 bool	bsp(Point const a, Point const b, Point const c, Point const point);
-static Fixed	area(Point const &a, Point const &b, Point const &c);
 #endif

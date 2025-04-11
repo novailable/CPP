@@ -6,16 +6,16 @@
 #    By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 23:28:02 by aoo               #+#    #+#              #
-#    Updated: 2025/04/10 03:44:34 by aoo              ###   ########.fr        #
+#    Updated: 2025/04/12 01:32:18 by aoo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = bsp
+NAME = clap
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-SRCS = main.cpp Fixed.cpp Point.cpp
+SRCS = main.cpp ClapTrap.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 

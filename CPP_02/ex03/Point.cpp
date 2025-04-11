@@ -27,6 +27,12 @@ static Fixed	area(Point const &a, Point const &b, Point const &c)
 	return (result / Fixed(2));
 }
 
+std::ostream	&operator<<(std::ostream &out, const Point &point)
+{
+	out << "(" << point.get_x() << ", " << point.get_y() << ")" ;
+	return (out); 
+}
+
 bool	bsp(Point const a, Point const b, Point const c, Point const point)
 {
 	Fixed	full = area(a, b, c);
@@ -36,5 +42,5 @@ bool	bsp(Point const a, Point const b, Point const c, Point const point)
 
 	if (a1 == Fixed(0) || a2 == Fixed(0) || a3 == Fixed(0))
 		return (false);
-	return (true);
+	return (full == a1 + a2 + a3);
 }
