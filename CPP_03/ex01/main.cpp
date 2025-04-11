@@ -30,7 +30,7 @@ int	main()
 	std::cout << "sc4v_tp1 > " << sc4v_tp1 << std::endl;
 	sc4v_tp1.attack("SC4V_TP2");
 	sc4v_tp2.setEnergy(0);
-	std::cout << "\nsc4v_tp2 > " << sc4v_tp2 << std::endl;
+	std::cout << "sc4v_tp2 > " << sc4v_tp2 << std::endl;
 	sc4v_tp2.guardGate();
 	std::cout << "\n" ; 
 

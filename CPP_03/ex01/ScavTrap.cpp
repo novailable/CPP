@@ -5,6 +5,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	_hp = 100;
 	_energy = 50;
 	_dmg = 20;
+	_mode = "Normal";
 	std::cout << "ScavTrap " << _name << " is created" << std::endl;
 }
 
@@ -30,5 +31,14 @@ void	ScavTrap::guardGate()
 	if (!is_ok())
 		return ;
 	--_energy;
-	std::cout << class_name() << " " << _name << " guard mode activiated. ÜR ÜR Æ Æ Æ Æ!" << std::endl;
+	_mode = "Gate Keeper";
+	std::cout << class_name() << " " << _name << " gate keeper mode activiated. ÜR ÜR Æ Æ Æ Æ!" << std::endl;
+}
+
+std::string	ScavTrap::status() const
+{
+	std::ostringstream	detail;
+
+	detail << ClapTrap::status() << ", mode " << _mode;
+	return (detail.str());
 }

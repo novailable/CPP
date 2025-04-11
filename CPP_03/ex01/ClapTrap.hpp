@@ -29,7 +29,7 @@ class ClapTrap
 		void	setDmg(int value);
 
 		bool	is_ok() const;
-		std::string	status() const;
+		virtual std::string	status() const;
 };
 
 std::ostream	&operator<<(std::ostream &out, const ClapTrap &clap_trap);
