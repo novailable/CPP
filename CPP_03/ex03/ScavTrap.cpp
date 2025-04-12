@@ -9,9 +9,27 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	std::cout << "ScavTrap " << _name << " is created" << std::endl;
 }
 
+ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
+{
+	_mode = other._mode;
+	std::cout << "ScavTrap " << other._name << " is cloned" << std::endl;
+}
+
+ScavTrap	&ScavTrap::operator=(const ScavTrap &other)
+{
+	if (this != &other)
+	{
+		std::string	org_name = this->_name;
+		ClapTrap::operator=(other);
+		std::cout << "ScavTrap " << org_name << " is altered into " << other._name << std::endl;
+		_mode = other._mode;
+	}
+	return (*this);
+}
+
 ScavTrap::~ScavTrap()
 {
-	std::cout << "ScavTrap " << _name << " is destoryed" << std::endl;
+	std::cout << "ScavTrap " << _name << " is destroyed" << std::endl;
 }
 
 std::string	ScavTrap::class_name() const {return ("ScavTrap");}

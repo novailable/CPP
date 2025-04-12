@@ -7,7 +7,7 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hp(10), _energy(10), _dmg(0
 
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
-	std::cout << class_name() << " "  << other._name << " is cloned" << std::endl;
+	std::cout << "ClapTrap "  << other._name << " is cloned" << std::endl;
 	_name = other._name;
 	_hp = other._hp;
 	_energy = other._energy;
@@ -18,7 +18,7 @@ ClapTrap	&ClapTrap::operator=(const ClapTrap &other)
 {
 	if (this != &other)
 	{
-		std::cout << class_name() << " "  << this->_name << " is altered into " << other._name << std::endl;
+		std::cout << "ClapTrap "  << this->_name << " is altered into " << other._name << std::endl;
 		_name = other._name;
 		_hp = other._hp;
 		_energy = other._energy;
@@ -29,7 +29,7 @@ ClapTrap	&ClapTrap::operator=(const ClapTrap &other)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << class_name() << " "  << _name << " is destoryed" << std::endl;
+	std::cout << "ClapTrap "  << _name << " is destroyed" << std::endl;
 }
 
 std::string	ClapTrap::class_name () const {return ("ClapTrap");}

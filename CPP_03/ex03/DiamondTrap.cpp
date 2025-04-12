@@ -7,30 +7,25 @@ DiamondTrap::DiamondTrap(std::string name) :
 	_energy = ScavTrap::_energy;
 	_dmg = FragTrap::_dmg;
 
-	std::cout << class_name() << " " << _name << " is created" << std::endl;
+	std::cout << "DiamondTrap " << _name << " is created" << std::endl;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &other) : ClapTrap(other), ScavTrap(other), FragTrap(other)
 {
 	_name = other._name;
-	_hp = other._hp;
-	_energy = other._energy;
-	_dmg = other._dmg;
-	std::cout << "DiamondTrap " << _name << " is cloned" << std::endl;
+	std::cout << "DiamondTrap " << _name << " is cloned" << std::endl;	
 }
 
 DiamondTrap	&DiamondTrap::operator=(const DiamondTrap &other)
 {
 	if (this != &other)
 	{
-		std::cout << "DiamondTrap " << _name << " is altered into " << other._name << std::endl;
+		std::string	org_name = _name;
 		ClapTrap::operator=(other);
         ScavTrap::operator=(other);
         FragTrap::operator=(other);
-        _name = other._name;
-		_hp = other._hp;
-		_energy = other._energy;
-		_dmg = other._dmg;
+		_name = other._name;
+		std::cout << "DiamondTrap " << org_name << " is altered into " << _name << std::endl;
 	}
 	return (*this);
 }
@@ -38,4 +33,20 @@ DiamondTrap	&DiamondTrap::operator=(const DiamondTrap &other)
 DiamondTrap::~DiamondTrap()
 {
 	std::cout << "DiamondTrap " << _name << " is destoryed" << std::endl;
+}
+
+std::string	DiamondTrap::class_name() const {return ("DiamondTrap");}
+
+void	DiamondTrap::whoAmI()
+{
+	std::cout << "My name is " << _name << "\nmy ClapTrap name is " << ClapTrap::_name << std::endl;
+}
+
+std::string	DiamondTrap::status() const
+{
+	std::ostringstream	detail;
+
+	detail << class_name() << " " << _name << " : hp " << _hp
+			<< ", energy " << _energy << ", dmg " << _dmg;
+	return (detail.str());
 }
