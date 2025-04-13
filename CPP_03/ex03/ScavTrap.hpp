@@ -8,6 +8,9 @@ class ScavTrap : virtual public ClapTrap
 	private:
 		std::string class_name() const;
 		std::string	_mode;
+	
+	protected:
+		int	_energy;
 
 	public:
 		ScavTrap(std::string name);
