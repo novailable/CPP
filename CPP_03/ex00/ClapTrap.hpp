@@ -14,10 +14,12 @@ private:
 	int	_dmg;
 
 public:
-	ClapTrap(std::string name);
+	ClapTrap();
 	ClapTrap(const ClapTrap &other);
 	ClapTrap	&operator=(const ClapTrap &other);
 	~ClapTrap();
+
+	ClapTrap(std::string name);
 
 	void	attack(const std::string& target);	
 	void	takeDamage(unsigned int amount);

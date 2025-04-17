@@ -37,4 +37,7 @@ int	main()
 	std::cout << "\nrock\t: " << &rock << ", rock_clone\t: " << &rock_clone
 				<< "\negg\t: " << &egg << ", egg_successor\t: " << &egg_successor 
 				<< "\n\n";
+
+	ClapTrap();
+	std::cout << std::endl;
 }

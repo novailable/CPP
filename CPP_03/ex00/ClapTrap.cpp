@@ -1,8 +1,8 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name) : _name(name), _hp(10), _energy(10), _dmg(0)
+ClapTrap::ClapTrap() : _name("CL4P-TP") , _hp(10), _energy(10), _dmg(0)
 {
-	std::cout << "ClapTrap " << _name << " is created" << std::endl;
+	std::cout << "ClapTrap is created with default name " << _name << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other)
@@ -30,6 +30,11 @@ ClapTrap	&ClapTrap::operator=(const ClapTrap &other)
 ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTrap " << _name << " is destroyed" << std::endl;
+}
+
+ClapTrap::ClapTrap(std::string name) : _name(name), _hp(10), _energy(10), _dmg(0)
+{
+	std::cout << "ClapTrap " << _name << " is created" << std::endl;
 }
 
 void	ClapTrap::attack(const std::string& target)
