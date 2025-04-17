@@ -24,6 +24,13 @@ Fixed &Fixed::operator=(const Fixed &other)
 	return (*this);
 }
 
+Fixed	Fixed::fixedRawBits(int const raw)
+{
+	Fixed	temp;
+	temp.setRawBits(raw);
+	return (temp);
+}
+
 Fixed::~Fixed() {}
 
 void	Fixed::setRawBits(int const raw)
@@ -44,10 +51,20 @@ bool	Fixed::operator>=(const Fixed &other) const {return (this->_value >= other.
 bool	Fixed::operator==(const Fixed &other) const {return (this->_value == other._value);}
 bool	Fixed::operator!=(const Fixed &other) const {return (this->_value != other._value);}
 
-Fixed	Fixed::operator+(const Fixed &other) const {return Fixed((this->toFloat() + other.toFloat()));}
-Fixed	Fixed::operator-(const Fixed &other) const {return Fixed((this->toFloat() - other.toFloat()));}
-Fixed	Fixed::operator*(const Fixed &other) const {return Fixed((this->toFloat() * other.toFloat()));}
-Fixed	Fixed::operator/(const Fixed &other) const {return Fixed(this->toFloat() / other.toFloat());}
+Fixed	Fixed::operator+(const Fixed &other) const {return Fixed::fixedRawBits(_value + other._value);}
+Fixed	Fixed::operator-(const Fixed &other) const {return Fixed::fixedRawBits(_value - other._value);}
+
+Fixed	Fixed::operator*(const Fixed &other) const
+{
+	long long	result = (long long)_value * other._value;
+	return (Fixed::fixedRawBits((int)(result >> _frac_bit)));
+}
+
+Fixed	Fixed::operator/(const Fixed &other) const
+{
+	long long	result = (long long)_value << _frac_bit;
+	return Fixed::fixedRawBits((int)(result / other._value));
+}
 
 Fixed	&Fixed::operator++()
 {
