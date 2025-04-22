@@ -1,5 +1,13 @@
 #include "FragTrap.hpp"
 
+FragTrap::FragTrap() : ClapTrap("FR4G-TP")
+{
+	_hp = 100;
+	_energy = 100;
+	_dmg = 30;
+	std::cout << "FragTrap is created with default name " << _name << std::endl;
+}
+
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	_hp = 100;

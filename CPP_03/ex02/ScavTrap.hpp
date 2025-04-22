@@ -10,6 +10,7 @@ class ScavTrap : public ClapTrap
 		std::string	_mode;
 
 	public:
+		ScavTrap();
 		ScavTrap(std::string name);
 		ScavTrap(const ScavTrap &other);
 		ScavTrap	&operator=(const ScavTrap &other);

@@ -1,5 +1,10 @@
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap() : _name("CL4P-TP"), _hp(10), _energy(10), _dmg(0)
+{
+	std::cout << "ClapTrap is created with default name " << _name << std::endl; 	
+}
+
 ClapTrap::ClapTrap(std::string name) : _name(name), _hp(10), _energy(10), _dmg(0)
 {
 	std::cout << "ClapTrap " << _name << " is created" << std::endl;

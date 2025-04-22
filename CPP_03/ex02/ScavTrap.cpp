@@ -1,5 +1,14 @@
 #include "ScavTrap.hpp"
 
+ScavTrap::ScavTrap() : ClapTrap("SC4V-TP")
+{
+	_hp = 100;
+	_energy = 50;
+	_dmg = 20;
+	_mode = "Normal";
+	std::cout << "ScavTrap is created with default name " << _name << std::endl;
+}
+
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	_hp = 100;
