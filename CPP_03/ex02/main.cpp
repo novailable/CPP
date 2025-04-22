@@ -2,19 +2,21 @@
 
 int	main()
 {
-	ClapTrap	cl4p_tp("CL4P-TP");
+	FragTrap	fr4g_default;
+	std::cout << fr4g_default << "\n\n";
+
 	FragTrap	fr4g_tp("FR4G-TP");
-	std::cout << cl4p_tp << "\n" << fr4g_tp << "\n\n";
+	std::cout << fr4g_tp << "\n\n";
 
 	std::cout << "Copy Constructor\n";
 	FragTrap	fr4g_tp1(fr4g_tp);
 	std::cout << "fr4g_tp org\t> " << &fr4g_tp << " | " << fr4g_tp << "\n"
 				<< "fr4g_tp1\t> " << &fr4g_tp1 << " | " << fr4g_tp1 << "\n\n"; 
 
+	fr4g_tp.attack("Dummy");
 	fr4g_tp.highFiveGuys();
-	cl4p_tp.attack("FR4G-TP");
 	fr4g_tp.takeDamage(20);
-	std::cout << cl4p_tp << "\n" << fr4g_tp << "\n\n";
+	std::cout << fr4g_tp << "\n\n";
 
 	std::cout << "Assign Overload\n";
 	FragTrap	fr4g_tp2("fr4g_tp2");

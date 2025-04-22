@@ -2,20 +2,21 @@
 
 int	main()
 {
-	ClapTrap	cl4p_tp("CL4P-TP");
+	ScavTrap sc4v_tp_default;
+	std::cout << sc4v_tp_default << "\n\n";
+
 	ScavTrap	sc4v_tp("SC4V-TP");
-	std::cout << cl4p_tp << "\n" << sc4v_tp << "\n\n";
+	std::cout << sc4v_tp << "\n\n";
 
 	std::cout << "Copy Constructor\n";
 	ScavTrap	sc4v_tp1(sc4v_tp);
 	std::cout << "sc4v_tp org\t> " << &sc4v_tp << " | " << sc4v_tp << "\n"
 				<< "sc4v_tp1\t> " << &sc4v_tp1 << " | " << sc4v_tp1 << "\n\n"; 
 
-	cl4p_tp.attack("SC4V_TP");
-	sc4v_tp.attack("CL4P-TP");
+	sc4v_tp.attack("Dummy");
 	sc4v_tp.guardGate();
 	sc4v_tp.takeDamage(20);
-	std::cout << cl4p_tp << "\n" << sc4v_tp << "\n\n";
+	std::cout << "\n" << sc4v_tp << "\n\n";
 
 	std::cout << "Assign Overload\n";
 	ScavTrap	sc4v_tp2("sc4v_tp2");

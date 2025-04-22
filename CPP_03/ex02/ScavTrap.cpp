@@ -1,21 +1,13 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap("SC4V-TP")
+ScavTrap::ScavTrap() : ClapTrap()
 {
+	_name = "SC4V-TP";
 	_hp = 100;
 	_energy = 50;
 	_dmg = 20;
 	_mode = "Normal";
 	std::cout << "ScavTrap is created with default name " << _name << std::endl;
-}
-
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
-{
-	_hp = 100;
-	_energy = 50;
-	_dmg = 20;
-	_mode = "Normal";
-	std::cout << "ScavTrap " << _name << " is created" << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
@@ -39,6 +31,15 @@ ScavTrap	&ScavTrap::operator=(const ScavTrap &other)
 ScavTrap::~ScavTrap()
 {
 	std::cout << "ScavTrap " << _name << " is destroyed" << std::endl;
+}
+
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+{
+	_hp = 100;
+	_energy = 50;
+	_dmg = 20;
+	_mode = "Normal";
+	std::cout << "ScavTrap " << _name << " is created" << std::endl;
 }
 
 std::string	ScavTrap::class_name() const {return ("ScavTrap");}

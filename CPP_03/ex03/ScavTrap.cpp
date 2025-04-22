@@ -1,17 +1,19 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+ScavTrap::ScavTrap() : ClapTrap()
 {
+	_name = "SC4V-TP";
 	_hp = 100;
 	_energy = 50;
 	_dmg = 20;
 	_mode = "Normal";
-	std::cout << "ScavTrap " << _name << " is created" << std::endl;
+	std::cout << "ScavTrap is created with default name " << _name << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
 {
 	_mode = other._mode;
+	_energy = other._energy;
 	std::cout << "ScavTrap " << other._name << " is cloned" << std::endl;
 }
 
@@ -23,6 +25,7 @@ ScavTrap	&ScavTrap::operator=(const ScavTrap &other)
 		ClapTrap::operator=(other);
 		std::cout << "ScavTrap " << org_name << " is altered into " << other._name << std::endl;
 		_mode = other._mode;
+		_energy = other._energy;
 	}
 	return (*this);
 }
@@ -32,8 +35,16 @@ ScavTrap::~ScavTrap()
 	std::cout << "ScavTrap " << _name << " is destroyed" << std::endl;
 }
 
-std::string	ScavTrap::class_name() const {return ("ScavTrap");}
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+{
+	_hp = 100;
+	_energy = 50;
+	_dmg = 20;
+	_mode = "Normal";
+	std::cout << "ScavTrap " << _name << " is created" << std::endl;
+}
 
+std::string	ScavTrap::class_name() const {return ("ScavTrap");}
 
 void	ScavTrap::attack(const std::string &target)
 {
@@ -42,6 +53,21 @@ void	ScavTrap::attack(const std::string &target)
 	--_energy;
 	std::cout << "Ka-BOOM! " << class_name() << " " << _name << " bringing the pain to " << target << "! Dealing " 
 	<< _dmg << " point of damage!" << std::endl;
+}
+
+void	ScavTrap::beRepaired(unsigned int amount)
+{
+	if (!is_ok())
+		return ;
+	ClapTrap::beRepaired(amount);
+	--_energy;
+	
+}
+
+void	ScavTrap::setEnergy(int value)
+{
+	ClapTrap::setEnergy(value);
+	_energy = value;
 }
 
 void	ScavTrap::guardGate()

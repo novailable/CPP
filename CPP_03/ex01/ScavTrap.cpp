@@ -2,6 +2,7 @@
 
 ScavTrap::ScavTrap() : ClapTrap()
 {
+	_name = "SC4V-TP";
 	_hp = 100;
 	_energy = 50;
 	_dmg = 20;

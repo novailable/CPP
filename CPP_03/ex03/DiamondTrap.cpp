@@ -1,16 +1,17 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(std::string name) : 
-	ClapTrap(name + "_ClapTrap"), ScavTrap(name + "_ScavTrap"), FragTrap(name + "_FragTrap"), _name(name)
+DiamondTrap::DiamondTrap() : 
+	ClapTrap (), ScavTrap(), FragTrap(), _name("DI4MOND-TP")
 {
 	_hp = FragTrap::_hp;
 	_energy = ScavTrap::_energy;
 	_dmg = FragTrap::_dmg;
 
-	std::cout << "DiamondTrap " << _name << " is created" << std::endl;
+	std::cout << "DiamondTrap is created with default name " << _name << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &other) : ClapTrap(other), ScavTrap(other), FragTrap(other)
+DiamondTrap::DiamondTrap(const DiamondTrap &other) : 
+	ClapTrap(other), ScavTrap(other), FragTrap(other)
 {
 	_name = other._name;
 	std::cout << "DiamondTrap " << _name << " is cloned" << std::endl;	
@@ -33,6 +34,16 @@ DiamondTrap	&DiamondTrap::operator=(const DiamondTrap &other)
 DiamondTrap::~DiamondTrap()
 {
 	std::cout << "DiamondTrap " << _name << " is destoryed" << std::endl;
+}
+
+DiamondTrap::DiamondTrap(std::string name) : 
+	ClapTrap(name + "_ClapTrap"), ScavTrap(name), FragTrap(name), _name(name)
+{
+	_hp = FragTrap::_hp;
+	_energy = ScavTrap::_energy;
+	_dmg = FragTrap::_dmg;
+
+	std::cout << "DiamondTrap " << _name << " is created" << std::endl;
 }
 
 std::string	DiamondTrap::class_name() const {return ("DiamondTrap");}

@@ -13,13 +13,17 @@ class ScavTrap : virtual public ClapTrap
 		int	_energy;
 
 	public:
-		ScavTrap(std::string name);
+		ScavTrap();
 		ScavTrap(const ScavTrap &other);
 		ScavTrap	&operator=(const ScavTrap &other);
 		~ScavTrap();
+
+		ScavTrap(std::string name);
 	
 		void	attack(const std::string &target);
+		void	beRepaired(unsigned int amount);
 		void	guardGate();
+		void	setEnergy(int value);
 		std::string	status() const;
 };
 

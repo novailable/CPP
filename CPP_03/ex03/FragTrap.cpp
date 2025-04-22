@@ -1,11 +1,12 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name)
+FragTrap::FragTrap() : ClapTrap()
 {
+	_name = "FR4G-TP";
 	_hp = 100;
 	_energy = 100;
 	_dmg = 30;
-	std::cout << "FragTrap " << _name << " is created" << std::endl;
+	std::cout << "FragTrap is created with default name " << _name << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other)
@@ -27,6 +28,14 @@ FragTrap	&FragTrap::operator=(const FragTrap &other)
 FragTrap::~FragTrap()
 {
 	std::cout << "FragTrap " << _name << " is destroyed" << std::endl;
+}
+
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
+{
+	_hp = 100;
+	_energy = 100;
+	_dmg = 30;
+	std::cout << "FragTrap " << _name << " is created" << std::endl;
 }
 
 std::string	FragTrap::class_name() const {return ("FragTrap");}
