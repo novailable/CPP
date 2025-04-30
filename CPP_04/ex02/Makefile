@@ -6,16 +6,16 @@
 #    By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 23:28:02 by aoo               #+#    #+#              #
-#    Updated: 2025/04/27 03:05:39 by aoo              ###   ########.fr        #
+#    Updated: 2025/04/28 18:04:33 by aoo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = animals
+NAME = animals_brain
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
+SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
