@@ -25,15 +25,7 @@ Character	&Character::operator=(const Character &other)
 	{
 		_name = other._name;
 		for (int i = 0; i < 4; ++i)
-		{
-			if (_inventory[i])
-			{
-				delete	_inventory[i];
-				_inventory[i] = other._inventory[i]->clone();
-			}
-			else
-				_inventory[i] = 0;
-		}
+			_inventory[i] = other._inventory[i] ? other._inventory[i]->clone() : 0;
 	}
 	return (*this);
 }
@@ -67,5 +59,8 @@ void	Character::unequip(int idx)
 void	Character::use(int idx, ICharacter& target)
 {
 	if (idx >= 0 && idx < 4 && _inventory[idx])
+	{
+		std::cout << _name << " : ";
 		_inventory[idx]->use(target);
+	}
 }

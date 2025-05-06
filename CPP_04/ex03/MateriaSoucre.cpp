@@ -8,5 +8,44 @@ MateriaSource::MateriaSource()
 
 MateriaSource::MateriaSource(const MateriaSource &other)
 {
-	for (int i = 0; )
+	for (int i = 0; i < 4; ++i)
+		_template[i] = other._template[i] ? other._template[i]->clone() : 0;
+}
+
+MateriaSource	&MateriaSource::operator=(const MateriaSource &other)
+{
+	if (this != &other)
+	{
+		for (int i = 0; i < 4; ++i)
+		{
+			if (_template[i])
+			{
+				delete	_template[i];
+				_template[i] = other._template[i] ? other._template[i]->clone() : 0;
+			}
+		}
+	}
+	return (*this);
+}
+
+void	MateriaSource::learnMateria(AMateria* m)
+{
+	for (int i = 0; i < 4; ++i)
+	{
+		if (!_template[i])
+		{
+			_template[i] = m;
+			break ;
+		}
+	}
+}
+
+AMateria*	MateriaSource::createMateria(std::string const &type)
+{
+	for (int i = 0; i < 4; ++i)
+	{
+		if (_template[i] && _template[i]->getType() == type)
+			return (_template[i]->clone());
+	}
+	return (0);
 }

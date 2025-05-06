@@ -7,10 +7,11 @@ int main()
 	Character a("a");
 	Character b("b");
 	AMateria*	ice = new Ice();
+	AMateria*	cure = new Cure();
 
 	a.equip(ice);
-	a.use(0, b);
-
-	a.unequip(0);
-
+	b.equip(cure);
+	b.use(0, b);
+	b = a;
+	b.use(0, b);
 }
