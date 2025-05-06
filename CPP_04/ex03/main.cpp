@@ -5,10 +5,12 @@
 int main()
 {
 	Character a("a");
-	// Character b("b");
-	// AMateria*	ice = new Ice();
+	Character b("b");
+	AMateria*	ice = new Ice();
 
-	// a.equip(ice);
-	// a.use(0, b);
+	a.equip(ice);
+	a.use(0, b);
+
+	a.unequip(0);
 
 }

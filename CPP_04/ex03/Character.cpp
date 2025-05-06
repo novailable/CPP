@@ -6,9 +6,10 @@ Character::Character() : _name("default")
 		_inventory[i] = 0;
 }
 
-Character::Character(std::string name)
+Character::Character(std::string name) : _name(name)
 {
-	_name = name;
+	for (int i = 0; i < 4; ++i)
+		_inventory[i] = 0;
 }
 
 Character::Character(const Character &other)
