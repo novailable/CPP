@@ -6,6 +6,11 @@ Character::Character() : _name("default")
 		_inventory[i] = 0;
 }
 
+Character::Character(std::string name)
+{
+	_name = name;
+}
+
 Character::Character(const Character &other)
 {
 	_name = other._name;
@@ -20,8 +25,13 @@ Character	&Character::operator=(const Character &other)
 		_name = other._name;
 		for (int i = 0; i < 4; ++i)
 		{
-			delete _inventory[i];
-			_inventory[i] = other._inventory[i] ? other._inventory[i]->clone() : 0;
+			if (_inventory[i])
+			{
+				delete	_inventory[i];
+				_inventory[i] = other._inventory[i]->clone();
+			}
+			else
+				_inventory[i] = 0;
 		}
 	}
 	return (*this);
