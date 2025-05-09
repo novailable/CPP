@@ -6,7 +6,6 @@
 
 class	MateriaSource : public IMateriaSource
 {
-
 	private:
 		AMateria*	_template[4];
 	public:
@@ -17,7 +16,6 @@ class	MateriaSource : public IMateriaSource
 
 		void	learnMateria(AMateria* m);
 		AMateria*	createMateria(std::string const &type);
-
 };
 
 #endif

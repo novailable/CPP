@@ -6,7 +6,7 @@
 #    By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 23:28:02 by aoo               #+#    #+#              #
-#    Updated: 2025/05/06 17:39:34 by aoo              ###   ########.fr        #
+#    Updated: 2025/05/09 16:35:28 by aoo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-SRCS = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp
+SRCS = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSoucre.cpp
 
 
 OBJS = ${SRCS:.cpp=.o}

@@ -28,6 +28,16 @@ MateriaSource	&MateriaSource::operator=(const MateriaSource &other)
 	return (*this);
 }
 
+MateriaSource::~MateriaSource()
+{
+	for (int i = 0; i < 4; ++i)
+	{
+		if (_template[i])
+		{std::cout << _template[i]->getType() << " trying to delete\n";
+			delete	_template[i];}
+	}
+}
+
 void	MateriaSource::learnMateria(AMateria* m)
 {
 	for (int i = 0; i < 4; ++i)
