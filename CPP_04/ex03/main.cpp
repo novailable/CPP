@@ -1,6 +1,7 @@
 #include "Character.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
+#include "MateriaSource.hpp"
 
 int main()
 {
@@ -9,6 +10,9 @@ int main()
 	AMateria*	ice = new Ice();
 	AMateria*	cure = new Cure();
 
+	MateriaSource	source;
+	source.learnMateria(ice);
+	source.createMateria("ice");
 	a.equip(ice);
 	b.equip(cure);
 	b.use(0, b);
