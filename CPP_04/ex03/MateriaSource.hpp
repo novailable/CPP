@@ -16,6 +16,7 @@ class	MateriaSource : public IMateriaSource
 
 		void	learnMateria(AMateria* m);
 		AMateria*	createMateria(std::string const &type);
+		std::string	display() const;
 };
 
 #endif

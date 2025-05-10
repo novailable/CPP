@@ -19,10 +19,8 @@ MateriaSource	&MateriaSource::operator=(const MateriaSource &other)
 		for (int i = 0; i < 4; ++i)
 		{
 			if (_template[i])
-			{
 				delete	_template[i];
-				_template[i] = other._template[i] ? other._template[i]->clone() : 0;
-			}
+			_template[i] = other._template[i] ? other._template[i]->clone() : 0;
 		}
 	}
 	return (*this);
@@ -33,8 +31,7 @@ MateriaSource::~MateriaSource()
 	for (int i = 0; i < 4; ++i)
 	{
 		if (_template[i])
-		{std::cout << _template[i]->getType() << " trying to delete\n";
-			delete	_template[i];}
+			delete	_template[i];
 	}
 }
 
@@ -58,4 +55,13 @@ AMateria*	MateriaSource::createMateria(std::string const &type)
 			return (_template[i]->clone());
 	}
 	return (0);
+}
+
+std::string	MateriaSource::display() const
+{
+	std::string	result = "source - ";
+	for (int i = 0; i < 4; ++i)
+		result += _template[i] ? _template[i]->getType() + ", " : "";
+	result += "\n";
+	return (result);
 }

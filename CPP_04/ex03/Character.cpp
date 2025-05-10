@@ -64,3 +64,16 @@ void	Character::use(int idx, ICharacter& target)
 		_inventory[idx]->use(target);
 	}
 }
+
+std::string	Character::status() const
+{
+	std::string result = _name + " : ";
+
+	for (int i = 0; i < 4; ++i)
+	{
+		if (_inventory[i])
+			result += _inventory[i]->getType() + ", ";
+	}
+	result += "\n";
+	return (result);
+}

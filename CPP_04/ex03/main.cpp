@@ -5,28 +5,16 @@
 #include <cstdarg>
 #include <iomanip>
 
-std::string	line = std::string(53, '-') + '\n';
+std::string	line = "+" + std::string(60, '-') + "+\n";
 
-std::string center(std::string input, int width = 113) 
-{ 
-    return std::string((width - input.length()) / 2, ' ') + input + std::string((width - input.length()) / 2, ' ');
+void	npcs_status(Character &npc1, Character &npc2)
+{
+	std::cout << &npc1 << ", " << npc1.status() << &npc2 << ", " << npc2.status();
 }
 
-// void	print_setw(size_t width, std::string str)
-// {
-// 	std::cout << std::setw(width) << (str.length() > width ? str.substr(0, width - 1) + "." : str) << " | ";
-// }
-
-void	npcs_status(ICharacter *npcs[])
+void	srcs_status(MateriaSource &ms1, MateriaSource &ms2)
 {
-	std::cout << line
-		<< "| name | " << center("inventory", 50) << " |\n";
-	for (int i = 0; npcs[i] != NULL; ++i)
-	{
-		std::cout << "| " << center("") ;
-		print_setw(4, npcs[i]->getName());
-		std::cout << " |" << std::endl;
-	}
+	std::cout << &ms1 << ", " << ms1.display() << &ms2 << ", " <<  ms2.display();
 }
 
 int main()
@@ -44,12 +32,46 @@ int main()
 	me->use(0, *bob);
 	me->use(1, *bob);
 
-	std::cout << "Character's OCF test\n";
-	ICharacter *npcs[] = {me, bob, NULL};
-	npcs_status(npcs);
-
 	delete bob;
 	delete me;
 	delete src;
+
+	std::cout << line << "MaterialSource's OCF test\n";
+	MateriaSource	ms1;
+	MateriaSource	ms2;
+	
+	ms1.learnMateria(new Ice());
+	ms1.learnMateria(new Cure());
+	ms2.learnMateria(new Cure());
+
+	MateriaSource	ms3(ms2);
+	srcs_status(ms2, ms3);
+	std::cout << "\n";
+	srcs_status(ms1, ms2);
+	ms2 = ms1;
+	srcs_status(ms1, ms2);
+
+
+	std::cout << line << "Character's OCF test\n";
+	Character c1;
+	c1.equip(ms1.createMateria("ice"));
+	c1.equip(ms1.createMateria("ice"));
+	c1.equip(ms1.createMateria("ice"));
+	c1.equip(ms1.createMateria("cure"));
+	Character c2("c2");
+	npcs_status(c1, c2);
+	c2 = c1;
+	npcs_status(c1, c2);
+	std::cout << "\n";
+	c1.equip(ms1.createMateria("fire"));
+	npcs_status(c1, c2);
+
+	std::cout << line << "AMateria OCF test" << std::endl;
+	AMateria *ice = new Ice();
+	AMateria *materia(ice);
+	std::cout << materia->getType() << std::endl;
+	AMateria *cure = new Cure();
+	*ice = *cure;
+	std::cout << ice->getType() << ", " << cure->getType() << std::endl;
 	return 0;
 }
