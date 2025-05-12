@@ -62,6 +62,10 @@ Fixed	Fixed::operator*(const Fixed &other) const
 
 Fixed	Fixed::operator/(const Fixed &other) const
 {
+	if (other._value == 0)
+		return (Fixed::fixedRawBits(
+			_value >= 0 ? std::numeric_limits<int>::max() 
+						: std::numeric_limits<int>::min()));
 	long long	result = (long long)_value << _frac_bit;
 	return Fixed::fixedRawBits((int)(result / other._value));
 }
