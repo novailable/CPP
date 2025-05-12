@@ -51,13 +51,17 @@ int main()
 	ms2 = ms1;
 	srcs_status(ms1, ms2);
 
-
 	std::cout << line << "Character's OCF test\n";
 	Character c1;
 	c1.equip(ms1.createMateria("ice"));
 	c1.equip(ms1.createMateria("ice"));
 	c1.equip(ms1.createMateria("ice"));
 	c1.equip(ms1.createMateria("cure"));
+
+	// AMateria *temp = ms1.createMateria("cure");
+	// c1.equip(temp);
+	// delete temp;
+	
 	Character c2("c2");
 	npcs_status(c1, c2);
 	c2 = c1;
@@ -73,5 +77,7 @@ int main()
 	AMateria *cure = new Cure();
 	*ice = *cure;
 	std::cout << ice->getType() << ", " << cure->getType() << std::endl;
+	delete	ice;
+	delete cure;
 	return 0;
 }
