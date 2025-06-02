@@ -21,7 +21,8 @@ Dog	&Dog::operator=(const Dog &other)
 		Animal::operator=(other);
 		std::cout << "Dog assignment operator called" << std::endl;
 		_type = other._type;
-		*_brain = *other._brain;
+		delete _brain;
+		_brain = new Brain(*other._brain);
 	}
 	return (*this);
 }

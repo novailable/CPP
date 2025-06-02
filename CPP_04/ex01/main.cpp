@@ -24,12 +24,12 @@ int	main()
 
 	for (int i = 0; i < num; ++i)
 	{
-		if (i < 3)
+		if (i % 2 != 1)
 			animals[i] = new Cat();
 		else
 			animals[i] = new Dog();
 	}
-
+	std::cout << "\n";
 	for (int i = 0; i < num; ++i)
 		delete animals[i];
 	std:: cout << std::string(53, '*') << "\n";
@@ -60,5 +60,5 @@ int	main()
 	cuppy = *cat;
 	compare_cats("cat : ", cat, "cuppy : ", &cuppy);
 	std::cout << std::string(53, '*') << "\n";
-
+	delete cat;
 }

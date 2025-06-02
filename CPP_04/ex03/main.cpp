@@ -79,5 +79,21 @@ int main()
 	std::cout << ice->getType() << ", " << cure->getType() << std::endl;
 	delete	ice;
 	delete cure;
+
+	std::cout << line << "Funny test" << std::endl;
+	AMateria *winter = new Ice();
+	AMateria *divine = new Cure();
+
+	std::cout << "winter : " << winter->getType() << ", divine : " << divine->getType() << std::endl;
+	*winter = *divine;
+
+	std::cout << "After *winter = *divine, winter : " << winter->getType() << ", divine : " << divine->getType() << std::endl;
+	Character cpn("cpn");
+	cpn.equip(winter);
+	std::cout << cpn.status();
+	cpn.use(0, cpn);
+
+	delete divine;
+
 	return 0;
 }

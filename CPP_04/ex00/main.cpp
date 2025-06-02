@@ -75,7 +75,7 @@ int	main()
 	const Animal* i = new Cat();
 	std::cout << j->getType() << " " << std::endl;
 	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
+	i->makeSound();
 	j->makeSound();
 	meta->makeSound();
 	std::cout << "\n";
@@ -86,4 +86,10 @@ int	main()
 	k->makeSound();
 	delta->makeSound();
 	std::cout << "\n\n";
+
+	delete meta;
+	delete j;
+	delete i;
+	delete delta;
+	delete k;
 }

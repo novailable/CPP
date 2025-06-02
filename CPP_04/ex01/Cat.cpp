@@ -22,7 +22,7 @@ Cat	&Cat::operator=(const Cat &other)
 		std::cout << "Cat assignment operator called" << std::endl;
 		_type = other._type;
 		delete _brain;
-		*_brain = *other._brain;
+		_brain = new Brain(*other._brain);
 	}
 	return (*this);
 }
