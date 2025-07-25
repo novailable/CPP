@@ -47,6 +47,16 @@ void	Bureaucrat::decreaseGrade(unsigned int num)
 	_grade += num;
 }
 
+void	Bureaucrat::increment(void)
+{
+	(*this)++;
+}
+
+void	Bureaucrat::decrement(void)
+{
+	(*this)--;
+}
+
 Bureaucrat	&Bureaucrat::operator++()
 {
 	validateGrade(_grade - 1);

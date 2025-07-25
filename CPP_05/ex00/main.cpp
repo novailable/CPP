@@ -9,7 +9,8 @@
 #define CYAN        "\033[36m"
 #define BOLD        "\033[1m"
 
-void printHeader(const std::string &title) {
+void printHeader(const std::string &title)
+{
     std::cout << BOLD << CYAN << "\n=== " << title << " ===\n" << RESET;
 }
 
@@ -148,16 +149,30 @@ void testExceptionOnIncrementDecrement()
     {
         std::cerr << RED << "Top increment exception: " << e.what() << RESET << "\n";
     }
-
-    try
+	try
+    {
+        top.increment();
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << RED << "Top increment exception: " << e.what() << RESET << "\n";
+    }
+	try
+	{
+		top.decrement();
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << RED << "Top decrease exception: " << e.what() << RESET << "\n";
+	}
+	try
     {
         bottom.decreaseGrade(1);
     }
     catch (const std::exception &e)
     {
         std::cerr << RED << "Bottom decrease exception: " << e.what() << RESET << "\n";
-    }
-
+	}
     try
     {
         bottom++;

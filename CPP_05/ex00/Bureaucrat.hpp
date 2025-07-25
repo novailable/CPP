@@ -24,6 +24,9 @@ class	Bureaucrat
 		void	increaseGrade(unsigned int num);
 		void	decreaseGrade(unsigned int num);
 
+		void	increment();
+		void	decrement();
+
 		Bureaucrat	&operator++();
 		Bureaucrat	operator++(int);
 		Bureaucrat	&operator--();
