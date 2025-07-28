@@ -4,14 +4,14 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 
-class	Bureacrat;
+class	Bureaucrat;
 
-class	Form
+class	Form 
 {
 	private:
 		const std::string	_name;
 		const int _req_grade;
-		bool	_sign = false;
+		bool	_sign;
 	public:
 		Form();
 		Form(const Form &other);
@@ -25,7 +25,7 @@ class	Form
 
 		void	beSigned(const Bureaucrat &bureau);
 
-		class GradeTooLowException : public std::exception 
+		class GradeTooLowException : public std::exception
 		{
 			public:
 				const char* what() const throw();
@@ -39,6 +39,6 @@ class	Form
 
 };
 
-std::ostream	&operator<<(std::ostream &out, const Form &other) const;
+std::ostream	&operator<<(std::ostream &out, const Form &other);
 
 #endif

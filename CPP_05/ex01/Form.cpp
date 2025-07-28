@@ -31,9 +31,20 @@ void	Form::beSigned(const Bureaucrat &bureau)
 	_sign = true;
 }
 
-std::ostream	&operator<<(std::ostream &out, const Form &other) const
+
+const char*	Form::GradeTooHighException::what() const throw()
+{
+	return ("Grade too high!");
+}
+
+const char*	Form::GradeTooLowException::what() const throw()
+{
+	return ("Grade too low!");
+}
+
+std::ostream	&operator<<(std::ostream &out, const Form &other)
 {
 	out << "Form " << other.get_name() << " require " << other.get_req_grade()
-		<< other.get_signed() ? "is signed already." : "haven't signed yet!";
+		<< (other.get_signed() ? "is signed already." : "haven't signed yet!");
 	return (out);
 }
