@@ -7,6 +7,7 @@ class	AMateria
 {
 	protected:
 		std::string	_type;
+		ICharacter *owner;
 	public:
 		AMateria();
 		AMateria(const AMateria &other);
