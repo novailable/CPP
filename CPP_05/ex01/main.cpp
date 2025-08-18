@@ -76,13 +76,14 @@ void	testConstructor()
 void	testSign()
 {
 	printHeader("Form Sign Test");
-	Bureaucrat	bureau("Theona", 12);
+	Bureaucrat	Theona("Theona", 12);
+	Form	form2("Form2", 30);
 	try
 	{
-		Form	form2("Form2", 30);
+		
 		std::cout << GREEN << form2 << "\n";
-		std::cout << bureau << "\n";
-		bureau.signForm(form2);
+		std::cout << Theona << "\n";
+		Theona.signForm(form2);
 		std::cout << form2 << RESET << "\n";
 	}
 	catch(const std::exception& e)
@@ -92,8 +93,9 @@ void	testSign()
 	printHeader("Invalid Sign Test");
 	Form	f2("f2", 10);
 	std::cout << GREEN << f2 << RESET << "\n";
-	std::cout << GREEN << bureau << RED << "\n";
-	bureau.signForm(f2);
+	std::cout << GREEN << Theona << RED << "\n";
+	Theona.signForm(f2);
+	Theona.signForm(form2);
 	std::cout << RESET << std::endl;
 
 }

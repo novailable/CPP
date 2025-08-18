@@ -4,12 +4,21 @@
 #include <string>
 #include <iostream>
 
+template <typename T>
+void	validateGrade(int grade)
+{
+	if (grade < 1)
+		throw typename T::GradeTooHighException();
+	if (grade > 150)
+		throw typename T::GradeTooLowException();
+}
+
+
 class	Bureaucrat
 {
 	private:
 		const std::string	_name;
 		int	_grade;
-		void	validateGrade(int grade);
 	public:
 		Bureaucrat();
 		Bureaucrat(const Bureaucrat &other);
@@ -32,17 +41,17 @@ class	Bureaucrat
 		Bureaucrat	&operator--();
 		Bureaucrat	operator--(int);
 
-	class GradeTooLowException : public std::exception 
-	{
-		public:
-			const char* what() const throw();
-    };
+		class GradeTooLowException : public std::exception 
+		{
+			public:
+				const char* what() const throw();
+		};
 
-	class GradeTooHighException : public std::exception 
-	{
-		public:
-			const char* what() const throw();
-    };
+		class GradeTooHighException : public std::exception 
+		{
+			public:
+				const char* what() const throw();
+		};
 };
 
 std::ostream	&operator<<(std::ostream &out, const Bureaucrat &bure);

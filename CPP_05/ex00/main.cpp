@@ -182,6 +182,9 @@ void	testExceptionOnIncrementDecrement()
 	}
 }
 
+#include <any>
+#include <typeinfo>
+
 int main()
 {
 	testDefaultConstructor();

@@ -15,13 +15,13 @@ Form::~Form() {}
 
 Form::Form(std::string name, int sign_grade) : _name(name), _sign_grade(sign_grade), _exec_grade(150), _sign(false)
 {
-	Bureaucrat::validateGrade(_sign_grade);
+	validateGrade<Form>(_sign_grade);
 }
 
 Form::Form(std::string name, int sign_grade, int exec_grade) : _name(name), _sign_grade(sign_grade), _exec_grade(exec_grade), _sign(false)
 {
-	Bureaucrat::validateGrade(_sign_grade);
-	Bureaucrat::validateGrade(_exec_grade);
+	validateGrade<Form>(_sign_grade);
+	validateGrade<Form>(_exec_grade);
 }
 
 std::string	Form::get_name() const {return (_name);}
@@ -34,6 +34,8 @@ bool	Form::is_signed() const {return (_sign);}
 
 void	Form::beSigned(const Bureaucrat &bureau)
 {
+	if (this->_sign)
+		throw	SignedException();
 	if (bureau.getGrade() > _sign_grade)
 		throw	GradeTooLowException();
 	_sign = true;
@@ -49,6 +51,11 @@ const char*	Form::GradeTooHighException::what() const throw()
 const char*	Form::GradeTooLowException::what() const throw()
 {
 	return ("Grade too low!");
+}
+
+const char*	Form::SignedException::what() const throw()
+{
+	return ("it's signed already!");
 }
 
 std::ostream	&operator<<(std::ostream &out, const Form &other)

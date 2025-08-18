@@ -12,17 +12,9 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &other)
 
 Bureaucrat::~Bureaucrat() {}
 
-void	Bureaucrat::validateGrade(int grade)
-{
-	if (grade < 1)
-		throw GradeTooHighException();
-	if (grade > 150)
-		throw GradeTooLowException();
-}
-
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade) 
 {
-	validateGrade(_grade);
+	validateGrade<Bureaucrat>(_grade);
 }
 
 std::string	Bureaucrat::getName(void) const {return(_name);}
@@ -31,19 +23,19 @@ int	Bureaucrat::getGrade(void) const {return(_grade);}
 
 void	Bureaucrat::setGrade(int grade)
 {
-	validateGrade(grade);
+	validateGrade<Bureaucrat>(_grade);
 	_grade = grade;
 }
 
 void	Bureaucrat::increaseGrade(unsigned int num)
 {
-	validateGrade(_grade - num);
+	validateGrade<Bureaucrat>(_grade - num);
 	_grade -= num;
 }
 
 void	Bureaucrat::decreaseGrade(unsigned int num)
 {
-	validateGrade(_grade + num);
+	validateGrade<Bureaucrat>(_grade + num);
 	_grade += num;
 }
 
@@ -59,14 +51,14 @@ void	Bureaucrat::decrement(void)
 
 Bureaucrat	&Bureaucrat::operator++()
 {
-	validateGrade(_grade - 1);
+	validateGrade<Bureaucrat>(_grade - 1);
 	_grade--;
 	return (*this);
 }
 
 Bureaucrat	Bureaucrat::operator++(int)
 {
-	validateGrade(_grade - 1);
+	validateGrade<Bureaucrat>(_grade - 1);
 	Bureaucrat tmp(*this);
 	--_grade;
 	return tmp;
@@ -74,30 +66,44 @@ Bureaucrat	Bureaucrat::operator++(int)
 
 Bureaucrat	&Bureaucrat::operator--()
 {
-	validateGrade(_grade + 1);
+	validateGrade<Bureaucrat>(_grade + 1);
 	_grade++;
 	return (*this);
 }
 
 Bureaucrat	Bureaucrat::operator--(int)
 {
-	validateGrade(_grade + 1);
+	validateGrade<Bureaucrat>(_grade + 1);
 	Bureaucrat tmp(*this);
 	++_grade;
 	return tmp;
 }
 
-void Bureaucrat::signForm(AForm& form)
+void	Bureaucrat::signForm(AForm& form)
 {
-    try
+	try
 	{
-        form.beSigned(*this);
-    }
-    catch (const std::exception& e)
+		form.beSigned(*this);
+	}
+	catch (const std::exception& e)
 	{
-        std::cout << _name << " couldn't sign " << form.get_name()
-                  << " because " << e.what() << std::endl;
-    }
+		std::cerr << _name << " couldn't sign " << form.get_name() 
+					<< " because " << e.what() << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(AForm const &form) const
+{
+	try
+	{
+		form.execute(*this);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << RED << this->getName() << " cannot execute '" \
+						<< form.get_name() << "' because " << e.what() 
+						<< RESET << std::endl;
+	}	
 }
 
 const char*	Bureaucrat::GradeTooHighException::what() const throw()

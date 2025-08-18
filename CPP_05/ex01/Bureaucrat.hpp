@@ -3,16 +3,23 @@
 
 #include <string>
 #include <iostream>
-
 #include "Form.hpp"
 
-#define RESET       "\033[0m"
-#define RED         "\033[31m"
-#define GREEN       "\033[32m"
-#define YELLOW      "\033[33m"
-#define CYAN        "\033[36m"
-#define BOLD        "\033[1m"
+#define RESET		"\033[0m"
+#define RED			"\033[31m"
+#define GREEN		"\033[32m"
+#define YELLOW		"\033[33m"
+#define CYAN		"\033[36m"
+#define BOLD		"\033[1m"
 
+template <typename T>
+void	validateGrade(int grade)
+{
+	if (grade < 1)
+		throw typename T::GradeTooHighException();
+	if (grade > 150)
+		throw typename T::GradeTooLowException();
+}
 class	Form;
 
 class	Bureaucrat
@@ -27,7 +34,6 @@ class	Bureaucrat
 		~Bureaucrat();
 
 		Bureaucrat(std::string name, int grade);
-		static void validateGrade(int grade);
 		std::string	getName(void) const;
 		int	getGrade(void) const;
 		void	setGrade(int grade);

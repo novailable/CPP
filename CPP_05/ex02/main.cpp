@@ -1,83 +1,153 @@
-#include "Form.hpp"
-#include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentalPardonForm.hpp"
+
+#include <sstream>
+#include <fstream>
+#include <string>
+
+std::string	tree_filename;
+
+void	printError(std::string &msg, std::exception &e)
+{
+	std::cerr << RED << msg << e.what() << RESET << std::endl;
+}
 
 void	printHeader(const std::string &title)
 {
 	std::cout << BOLD << CYAN << "\n=== " << title << " ===\n" << RESET;
 }
 
-void	testConstructor()
+std::string	readFile(const std::string &filename)
 {
-	printHeader("Form Constructor Test");
-	try
+	std::ifstream	file(filename.c_str());
+	if (!file)
 	{
-		AForm	form;
-		std::cout << GREEN << form << RESET << "\n";
-		AForm	form1("Form", 30);
-		std::cout << GREEN << form1 << RESET << "\n";
+		std::perror (RED"Error opening file");
+		return ("");
 	}
-	catch(const std::exception& e)
+	else
 	{
-		std::cerr << RED << "Form Constructor: " << e.what() << RESET << "\n";
+		std::perror(RED"Error opening file");
 	}
-	printHeader("Copy Constructor and Assignment Test");
-	AForm original("OrgForm", 75);
-	Bureaucrat	cat("Cat", 34);
-	std::cout << GREEN << cat << RESET << "\n";
-	original.beSigned(cat);
-	AForm copy(original);
-	AForm assigned("AssignForm", 25);
-	std::cout << GREEN << assigned << RESET << "\n";
-	assigned = original;
-	std::cout << YELLOW << "Original: " << RESET << original << "\n";
-	std::cout << YELLOW << "Copy: " << RESET << copy << "\n";
-	std::cout << YELLOW << "Assigned: " << RESET << assigned << "\n";
-	printHeader("Invalid Construction Test");
-	try
+
+	std::stringstream	buffer;
+	buffer << file.rdbuf();
+	return (buffer.str());
+}
+
+std::string	to_upper(std::string str)
+{
+	for (size_t i = 0; i < str.length(); ++i)
+		str[i] = std::toupper(str[i]);
+	return (str);
+}
+
+std::string	get_safe_input(std::string prompt)
+{
+	std::string	value;
+
+	std::cout << prompt;
+	if (!getline(std::cin, value) || value.empty())
 	{
-		AForm	f1("f1", 0);
+		std::cin.clear();
+		std::cout << "\neof detected quitting." << std::endl;
+		exit(0);
 	}
-	catch(const std::exception &e)
+	return (value);
+}
+
+void	testShrubberyCretaionForm(Bureaucrat &Theona)
+{
+	Bureaucrat	Anoeth("Anoeth", 140);
+
+	printHeader("Shrubbery Form Invalid Test");
+	ShrubberyCreationForm	shrubbery("Laura");
+	Anoeth.executeForm(shrubbery);
+	std::cout << GREEN;
+	Anoeth.signForm(shrubbery);
+	Anoeth.executeForm(shrubbery);
+
+	printHeader("Shrubbery Form Valid Test");
+	std::cout << GREEN;
+	ShrubberyCreationForm	shberry("Victor");
+	Theona.signForm(shberry);
+	Theona.executeForm(shberry);
+	std::cout << YELLOW;
+	tree_filename = shberry.get_filename();
+	
+	std::cout << tree_filename << " created" << RESET << std::endl;
+}
+
+void	testRobotmyRequestForm(Bureaucrat &Theona)
+{
+	Bureaucrat Anoeht("Anoeht", 60);
+
+	printHeader("RobotmyRequestForm Invalid Test");
+	RobotomyRequestForm	roboform("Khan");
+	Anoeht.executeForm(roboform);
+	std::cout << GREEN;
+	Anoeht.signForm(roboform);
+	Anoeht.executeForm(roboform);
+
+	printHeader("RobotmyRequestForm Valid Test");
+	RobotomyRequestForm	roboask("Tinker");
+	std::cout << GREEN;
+	Theona.signForm(roboask);
+	Theona.executeForm(roboask);
+}
+
+void	testPresidentalPardonForm(Bureaucrat &Theona)
+{
+	Bureaucrat Anoeht("Anoeht", 15);
+
+	printHeader("PresidentalPardonForm Invalid Test");
+	PresidentalPardonForm	forgiveForm("Gul'dan");
+	Anoeht.executeForm(forgiveForm);
+	std::cout << GREEN;
+	Anoeht.signForm(forgiveForm);
+	Anoeht.executeForm(forgiveForm);
+
+	printHeader("PresidentalPardonForm Valid Test");
+	PresidentalPardonForm	pardonForm("Yurnero");
+	std::cout << GREEN;
+	Theona.signForm(pardonForm);
+	Theona.executeForm(pardonForm);
+}
+
+void	askFileOpen()
+{
+	std::string	prompt = std::string(BOLD) + YELLOW + "Would you like to open" + tree_filename + "? (y / n) : ";
+	std::string	answer = to_upper(get_safe_input(prompt));
+	if (answer == "YES" || answer == "Y")
 	{
-		std::cerr << RED << "Caught exception: " << e.what() << RESET << "\n";
-	}
-	try
-	{
-		AForm	f11("f11", 151);	
-	}
-	catch(const std::exception &e)
-	{
-		std::cerr << RED << "Caught exception: " << e.what() << RESET << "\n";
+		std::cout << readFile(tree_filename) << std::endl;
 	}
 }
 
-void	testSign()
+void	askFileDelete()
 {
-	printHeader("Form Sign Test");
-	Bureaucrat	bureau("Theona", 12);
-	try
-	{
-		AForm	form2("Form2", 30);
-		std::cout << GREEN << form2 << "\n";
-		std::cout << bureau << "\n";
-		bureau.signForm(form2);
-		std::cout << form2 << RESET << "\n";
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << RED << "Form Constructor: " << e.what() << RESET << "\n";
-	}
-	printHeader("Invalid Sign Test");
-	AForm	f2("f2", 10);
-	std::cout << GREEN << f2 << RESET << "\n";
-	std::cout << GREEN << bureau << RED << "\n";
-	bureau.signForm(f2);
-	std::cout << RESET << std::endl;
+	std::string prompt = std::string(BOLD) + YELLOW + "Would you like to delete " + tree_filename + "? (y / n) : ";
+    std::string answer = to_upper(get_safe_input(prompt));
 
+    if (answer == "YES" || answer == "Y")
+	{
+        if (std::remove(tree_filename.c_str()) == 0)
+            std::cout << GREEN << "File deleted successfully.\n" << RESET;
+		else
+			std::perror(RED"Error deleting file");
+	}
 }
 
 int	main()
 {
-	testConstructor();
-	testSign();
+	Bureaucrat	Theona("Theona", 1);
+	testShrubberyCretaionForm(Theona);
+	testRobotmyRequestForm(Theona);
+	testPresidentalPardonForm(Theona);
+	std::cout << "\n";
+	askFileOpen();
+	std::cout << "\n";
+	askFileDelete();
+
 }

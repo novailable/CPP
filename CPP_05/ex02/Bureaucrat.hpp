@@ -3,16 +3,23 @@
 
 #include <string>
 #include <iostream>
+#include "AForm.hpp"
 
-#include "Form.hpp"
+#define RESET		"\033[0m"
+#define RED			"\033[31m"
+#define GREEN		"\033[32m"
+#define YELLOW		"\033[33m"
+#define CYAN		"\033[36m"
+#define BOLD		"\033[1m"
 
-#define RESET       "\033[0m"
-#define RED         "\033[31m"
-#define GREEN       "\033[32m"
-#define YELLOW      "\033[33m"
-#define CYAN        "\033[36m"
-#define BOLD        "\033[1m"
-
+template <typename T>
+void	validateGrade(int grade)
+{
+	if (grade < 1)
+		throw typename T::GradeTooHighException();
+	if (grade > 150)
+		throw typename T::GradeTooLowException();
+}
 class	AForm;
 
 class	Bureaucrat
@@ -27,7 +34,6 @@ class	Bureaucrat
 		~Bureaucrat();
 
 		Bureaucrat(std::string name, int grade);
-		static void validateGrade(int grade);
 		std::string	getName(void) const;
 		int	getGrade(void) const;
 		void	setGrade(int grade);
@@ -44,18 +50,19 @@ class	Bureaucrat
 		Bureaucrat	operator--(int);
 
 		void	signForm(AForm &form);
+		void	executeForm(AForm const &form) const;
 
-	class GradeTooLowException : public std::exception 
-	{
-		public:
-			const char* what() const throw();
-	};
+		class GradeTooLowException : public std::exception 
+		{
+			public:
+				const char* what() const throw();
+		};
 
-	class GradeTooHighException : public std::exception 
-	{
-		public:
-			const char* what() const throw();
-	};
+		class GradeTooHighException : public std::exception 
+		{
+			public:
+				const char* what() const throw();
+		};
 };
 
 std::ostream	&operator<<(std::ostream &out, const Bureaucrat &bure);
