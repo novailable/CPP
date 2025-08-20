@@ -13,6 +13,7 @@ AForm	&AForm::operator=(const AForm &other)
 
 AForm::~AForm() {}
 
+AForm::AForm(int sign_grade, int exec_grade) : _name("anonymous"), _sign_grade(sign_grade), _exec_grade(exec_grade), _sign(false), _target("unkown") {}
 AForm::AForm(std::string name, int sign_grade) : _name(name), _sign_grade(sign_grade), _exec_grade(150), _sign(false)
 {
 	validateGrade<AForm>(_sign_grade);

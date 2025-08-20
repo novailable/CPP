@@ -55,7 +55,7 @@ std::string	get_safe_input(std::string prompt)
 	return (value);
 }
 
-void	testShrubberyCretaionForm(Bureaucrat &Theona, AForm *form)
+void	testShrubberyCreationForm(Bureaucrat &Theona, AForm *form)
 {
 	Bureaucrat	Anoeth("Anoeth", 140);
 
@@ -147,9 +147,13 @@ void	testIntern(Bureaucrat &Theona)
 	AForm	*roboto = someRandomIntern.makeForm("robotomy request", "White Bear");
 	AForm	*pardon = someRandomIntern.makeForm("presidential pardon", "Black Bear");
 	std::cout << RESET;
-	testShrubberyCretaionForm(Theona, shrubbery);
+	testShrubberyCreationForm(Theona, shrubbery);
 	testRobotmyRequestForm(Theona, roboto);
 	testPresidentalPardonForm(Theona, pardon);
+
+	delete	shrubbery;
+	delete	roboto;
+	delete	pardon;
 }
 
 int	main()

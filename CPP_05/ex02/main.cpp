@@ -57,7 +57,23 @@ std::string	get_safe_input(std::string prompt)
 	return (value);
 }
 
-void	testShrubberyCretaionForm(Bureaucrat &Theona)
+void	testOCF()
+{
+	printHeader("Shrubbery Form OCF");
+
+	ShrubberyCreationForm	org;
+	ShrubberyCreationForm	shrubby("Aug20");
+
+	std::cout << GREEN << "org : " << org << std::endl;
+	std::cout << "shrubby : " << shrubby << std::endl;
+
+	std::cout << "org = shrubby, org : " << (org = shrubby) << std::endl;
+
+	
+}
+
+
+void	testShrubberyCreationForm(Bureaucrat &Theona)
 {
 	Bureaucrat	Anoeth("Anoeth", 140);
 
@@ -142,7 +158,7 @@ void	askFileDelete()
 int	main()
 {
 	Bureaucrat	Theona("Theona", 1);
-	testShrubberyCretaionForm(Theona);
+	testShrubberyCreationForm(Theona);
 	testRobotmyRequestForm(Theona);
 	testPresidentalPardonForm(Theona);
 	std::cout << "\n";

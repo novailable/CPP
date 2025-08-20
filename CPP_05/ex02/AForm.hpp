@@ -13,21 +13,23 @@ class	AForm
 		const int	_sign_grade;
 		const int	_exec_grade;
 		bool	_sign;
+		
 	protected:
+		std::string	_target;
 		virtual bool	action() const = 0;
 	public:
 		AForm();
 		AForm(const AForm &other);
 		AForm	&operator=(const AForm &other);
 		~AForm();
-		
-		AForm(std::string name, int sign_grade);
-		AForm(std::string name, int sign_grade, int exec_grade);
+
+		AForm(int sign_grade, int exec_grade);
+		AForm(std::string name, int sign_grade, int exec_grade, const std::string target);
 		std::string	get_name() const;
 		int	get_sign_grade() const;
 		int	get_exec_grade() const;
+		std::string	get_target() const;
 		bool is_signed() const;
-
 		void	beSigned(const Bureaucrat &bureau);
 		void	execute(Bureaucrat const & executor) const;
 		

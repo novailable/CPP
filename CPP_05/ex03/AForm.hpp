@@ -19,9 +19,10 @@ class	AForm
 		AForm();
 		AForm(const AForm &other);
 		AForm	&operator=(const AForm &other);
-		~AForm();
+		virtual ~AForm();
 		
-		AForm(std::string name, int sign_grade);
+		// AForm(std::string name, int sign_grade);
+		AForm(int sign_grade, int exec_grade);
 		AForm(std::string name, int sign_grade, int exec_grade);
 		std::string	get_name() const;
 		int	get_sign_grade() const;

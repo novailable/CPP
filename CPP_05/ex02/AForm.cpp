@@ -1,24 +1,29 @@
 #include "AForm.hpp"
 
-AForm::AForm() : _name("anonymous"), _sign_grade(150), _exec_grade(150), _sign(false) {}
+AForm::AForm() : _name("anonymous"), _sign_grade(150), _exec_grade(150), _sign(false), _target("unknown") {}
 
-AForm::AForm(const AForm &other) : _name(other._name), _sign_grade(other._sign_grade), _exec_grade(other._sign), _sign(other._sign) {}
+AForm::AForm(const AForm &other) : _name(other._name), _sign_grade(other._sign_grade), _exec_grade(other._exec_grade), _sign(other._sign), _target(other._target) {}
 
 AForm	&AForm::operator=(const AForm &other)
 {
 	if (this != &other)
+	{
+		_target = other._target;
 		_sign = other._sign;
+	}
 	return (*this);
 }
 
 AForm::~AForm() {}
 
-AForm::AForm(std::string name, int sign_grade) : _name(name), _sign_grade(sign_grade), _exec_grade(150), _sign(false)
+AForm::AForm(int sign_grade, int exec_grade) :  _name("anonymous"), _sign_grade(sign_grade), _exec_grade(exec_grade), _sign(false), _target("unknown")
 {
 	validateGrade<AForm>(_sign_grade);
+	validateGrade<AForm>(_exec_grade);
 }
 
-AForm::AForm(std::string name, int sign_grade, int exec_grade) : _name(name), _sign_grade(sign_grade), _exec_grade(exec_grade), _sign(false)
+AForm::AForm(std::string name, int sign_grade, int exec_grade, const std::string target) :
+	_name(name), _sign_grade(sign_grade), _exec_grade(exec_grade), _sign(false), _target(target)
 {
 	validateGrade<AForm>(_sign_grade);
 	validateGrade<AForm>(_exec_grade);
@@ -29,6 +34,8 @@ std::string	AForm::get_name() const {return (_name);}
 int	AForm::get_sign_grade() const {return (_sign_grade);}
 
 int	AForm::get_exec_grade() const {return (_exec_grade);}
+
+std::string	AForm::get_target() const {return (_target);}
 
 bool	AForm::is_signed() const {return (_sign);}
 
@@ -73,6 +80,7 @@ std::ostream	&operator<<(std::ostream &out, const AForm &other)
 {
 	out << "Form : '" << other.get_name() << "' require grade to sign '" << other.get_sign_grade() 
 		<< "' & to execute '" << other.get_exec_grade()
-		<< (other.is_signed() ? "' is signed already." : "' haven't signed yet!");
+		<< (other.is_signed() ? "' is signed already." : "' haven't signed yet!")
+		<< " & is target to '" << other.get_target();
 	return (out);
 }
