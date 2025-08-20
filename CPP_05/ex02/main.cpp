@@ -76,6 +76,15 @@ void	testOCF()
 	std::cout << "r_copy(roboto) : " << RobotomyRequestForm(roboto) << std::endl;
 	r_org = roboto;
 	std::cout << "r_org = roboto, r_org : " << r_org << std::endl;
+
+	printHeader("Presidental Pardon Form OCF");
+	PresidentalPardonForm	p_org;
+	PresidentalPardonForm	pardon("Forger");
+	std::cout << "p_org : " << p_org << std::endl;
+	std::cout << "pardon : " << pardon << std::endl;
+	std::cout << "p_copy(pardon) : " << PresidentalPardonForm(pardon) << std::endl;
+	p_org = pardon;
+	std::cout << "p_org = pardon, p_org : " << p_org << std::endl;
 }
 
 

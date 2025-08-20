@@ -12,7 +12,7 @@ Intern	&Intern::operator=(const Intern &other)
 Intern::~Intern() {}
 
 template <typename T>
-AForm*	createForm(const std::string& target) {return new T(target);}
+AForm*	createForm(const std::string& target) {return (new T(target));}
 
 AForm*	Intern::makeForm(std::string form_name, std::string target)
 {

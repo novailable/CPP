@@ -21,7 +21,7 @@ class	AForm
 		AForm();
 		AForm(const AForm &other);
 		AForm	&operator=(const AForm &other);
-		~AForm();
+		virtual	~AForm();
 
 		AForm(int sign_grade, int exec_grade);
 		AForm(std::string name, int sign_grade, int exec_grade, const std::string target);
