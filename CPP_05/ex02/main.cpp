@@ -60,16 +60,22 @@ std::string	get_safe_input(std::string prompt)
 void	testOCF()
 {
 	printHeader("Shrubbery Form OCF");
-
 	ShrubberyCreationForm	org;
 	ShrubberyCreationForm	shrubby("Aug20");
-
 	std::cout << GREEN << "org : " << org << std::endl;
 	std::cout << "shrubby : " << shrubby << std::endl;
-
-	std::cout << "org = shrubby, org : " << (org = shrubby) << std::endl;
-
+	std::cout << "copy(shrubby) : " << ShrubberyCreationForm(shrubby) << std::endl;
+	org = shrubby;
+	std::cout << "org = shrubby, org : " << org << std::endl;
 	
+	printHeader("Robotomy Form OCF");
+	RobotomyRequestForm	r_org;
+	RobotomyRequestForm	roboto("1715");
+	std::cout << "r_org : " << r_org << std::endl;
+	std::cout << "roboto : " << roboto << std::endl;
+	std::cout << "r_copy(roboto) : " << RobotomyRequestForm(roboto) << std::endl;
+	r_org = roboto;
+	std::cout << "r_org = roboto, r_org : " << r_org << std::endl;
 }
 
 
@@ -158,6 +164,7 @@ void	askFileDelete()
 int	main()
 {
 	Bureaucrat	Theona("Theona", 1);
+	testOCF();
 	testShrubberyCreationForm(Theona);
 	testRobotmyRequestForm(Theona);
 	testPresidentalPardonForm(Theona);
