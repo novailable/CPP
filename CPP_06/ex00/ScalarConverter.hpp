@@ -1,8 +1,13 @@
 #ifndef	SCALARCONVERTER_HPP
 #define	SCALARCONVERTER_HPP
 
-#include <string>
 #include <iostream>
+#include <iomanip>
+#include <sstream>
+#include <limits>
+#include <cstdlib>
+#include <cerrno>
+#include <cmath>
 #include <exception>
 
 class	ScalarConverter
@@ -14,7 +19,7 @@ class	ScalarConverter
 		~ScalarConverter();
 
 	public:
-		static	void	convert(std::string input);
+		static	void	convert(const std::string &input);
 };
 
 #endif
