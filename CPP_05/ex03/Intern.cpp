@@ -28,8 +28,9 @@ AForm*	Intern::makeForm(std::string form_name, std::string target)
 	{
 		if (form_name == names[i])
 		{
-			std::cout << "Intern creates " << creators[i](target)->get_name() << std::endl;
-			return creators[i](target);
+			AForm	*result = creators[i](target);
+			std::cout << "Intern creates " << result->get_name() << std::endl;
+			return result;
 		}
 	}
 	throw FormNameException();

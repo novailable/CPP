@@ -45,7 +45,7 @@ std::string	get_safe_input(std::string prompt)
 {
 	std::string	value;
 
-	std::cout << prompt;
+	std::cout << YELLOW << prompt;
 	if (!getline(std::cin, value) || value.empty())
 	{
 		std::cin.clear();
@@ -106,7 +106,7 @@ void	testPresidentalPardonForm(Bureaucrat &Theona, AForm *form)
 
 void	askFileOpen()
 {
-	std::string	prompt = std::string(BOLD) + YELLOW + "Would you like to open '" + tree_filename + "'? (y / n) : ";
+	std::string	prompt = std::string(BOLD) + "Would you like to open '" + tree_filename + "'? (y / n) : ";
 	std::string	answer = to_upper(get_safe_input(prompt));
 	if (answer == "YES" || answer == "Y")
 	{
@@ -116,9 +116,10 @@ void	askFileOpen()
 
 void	askFileDelete()
 {
-	std::string prompt = std::string(BOLD) + YELLOW + "Would you like to delete '" + tree_filename + "'? (y / n) : ";
+	std::string prompt = std::string(BOLD) + "Would you like to delete '" + tree_filename + "'? (y / n) : ";
+	
     std::string answer = to_upper(get_safe_input(prompt));
-
+	std::cout << RESET;
     if (answer == "YES" || answer == "Y")
 	{
         if (std::remove(tree_filename.c_str()) == 0)
