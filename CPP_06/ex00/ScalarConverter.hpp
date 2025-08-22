@@ -1,15 +1,20 @@
 #ifndef	SCALARCONVERTER_HPP
 #define	SCALARCONVERTER_HPP
 
+#include <string>
+#include <iostream>
+#include <exception>
+
 class	ScalarConverter
 {
-	public:
+	private:
 		ScalarConverter();
 		ScalarConverter(const ScalarConverter &other);
 		ScalarConverter	&operator=(const ScalarConverter &other);
 		~ScalarConverter();
 
-		static	void	
-}
+	public:
+		static	void	convert(std::string input);
+};
 
 #endif
