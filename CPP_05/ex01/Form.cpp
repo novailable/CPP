@@ -2,7 +2,7 @@
 
 Form::Form() : _name("anonymous"), _sign_grade(150), _exec_grade(150), _sign(false) {}
 
-Form::Form(const Form &other) : _name(other._name), _sign_grade(other._sign_grade), _exec_grade(other._sign), _sign(other._sign) {}
+Form::Form(const Form &other) : _name(other._name), _sign_grade(other._sign_grade), _exec_grade(other._exec_grade), _sign(other._sign) {}
 
 Form	&Form::operator=(const Form &other)
 {

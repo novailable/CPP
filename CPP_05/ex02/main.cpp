@@ -62,31 +62,30 @@ void	testOCF()
 	printHeader("Shrubbery Form OCF");
 	ShrubberyCreationForm	org;
 	ShrubberyCreationForm	shrubby("Aug20");
-	std::cout << GREEN << "org : " << org << std::endl;
-	std::cout << "shrubby : " << shrubby << std::endl;
-	std::cout << "copy(shrubby) : " << ShrubberyCreationForm(shrubby) << std::endl;
+	std::cout << RESET << "org : \n" << GREEN << org << std::endl;
+	std::cout << RESET << "shrubby : \n" << GREEN << shrubby << std::endl;
+	std::cout << RESET << "copy(shrubby) : \n" << GREEN << ShrubberyCreationForm(shrubby) << std::endl;
 	org = shrubby;
-	std::cout << "org = shrubby, org : " << org << std::endl;
+	std::cout << RESET << "org = shrubby, org : \n" << GREEN << org << std::endl;
 	
 	printHeader("Robotomy Form OCF");
 	RobotomyRequestForm	r_org;
 	RobotomyRequestForm	roboto("1715");
-	std::cout << "r_org : " << r_org << std::endl;
-	std::cout << "roboto : " << roboto << std::endl;
-	std::cout << "r_copy(roboto) : " << RobotomyRequestForm(roboto) << std::endl;
+	std::cout << "r_org : \n" << GREEN << r_org << std::endl;
+	std::cout << RESET << "roboto : \n" << GREEN << roboto << std::endl;
+	std::cout << RESET << "r_copy(roboto) : \n" << GREEN << RobotomyRequestForm(roboto) << std::endl;
 	r_org = roboto;
-	std::cout << "r_org = roboto, r_org : " << r_org << std::endl;
+	std::cout << RESET << "r_org = roboto, r_org : \n" << GREEN << r_org << std::endl;
 
 	printHeader("Presidental Pardon Form OCF");
 	PresidentalPardonForm	p_org;
 	PresidentalPardonForm	pardon("Forger");
-	std::cout << "p_org : " << p_org << std::endl;
-	std::cout << "pardon : " << pardon << std::endl;
-	std::cout << "p_copy(pardon) : " << PresidentalPardonForm(pardon) << std::endl;
+	std::cout << "p_org : \n" << GREEN << p_org << std::endl;
+	std::cout << RESET << "pardon : \n" << GREEN << pardon << std::endl;
+	std::cout << RESET << "p_copy(pardon) : \n" << GREEN << PresidentalPardonForm(pardon) << std::endl;
 	p_org = pardon;
-	std::cout << "p_org = pardon, p_org : " << p_org << std::endl;
+	std::cout << RESET << "p_org = pardon, p_org : \n" << GREEN << p_org << std::endl;
 }
-
 
 void	testShrubberyCreationForm(Bureaucrat &Theona)
 {
@@ -148,7 +147,7 @@ void	testPresidentalPardonForm(Bureaucrat &Theona)
 
 void	askFileOpen()
 {
-	std::string	prompt = std::string(BOLD) + "Would you like to open" + tree_filename + "? (y / n) : ";
+	std::string	prompt = std::string(BOLD) + "Would you like to open " + tree_filename + "? (y / n) : ";
 	std::string	answer = to_upper(get_safe_input(prompt));
 	if (answer == "YES" || answer == "Y")
 	{

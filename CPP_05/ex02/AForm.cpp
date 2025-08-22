@@ -81,6 +81,6 @@ std::ostream	&operator<<(std::ostream &out, const AForm &other)
 	out << "Form : '" << other.get_name() << "' require grade to sign '" << other.get_sign_grade() 
 		<< "' & to execute '" << other.get_exec_grade()
 		<< (other.is_signed() ? "' is signed already." : "' haven't signed yet!")
-		<< " & is target to '" << other.get_target();
+		<< " & is target to '" << other.get_target() << "'";
 	return (out);
 }
