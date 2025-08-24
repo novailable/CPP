@@ -12,13 +12,13 @@
 #define CYAN		"\033[36m"
 #define BOLD		"\033[1m"
 
-template <typename T>
+template <typename S>
 void	validateGrade(int grade)
 {
 	if (grade < 1)
-		throw typename T::GradeTooHighException();
+		throw typename S::GradeTooHighException();
 	if (grade > 150)
-		throw typename T::GradeTooLowException();
+		throw typename S::GradeTooLowException();
 }
 class	Form;
 
