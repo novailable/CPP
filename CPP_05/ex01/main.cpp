@@ -1,14 +1,14 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-void	printHeader(const std::string &title)
+void	print_header(const std::string &title)
 {
 	std::cout << BOLD << CYAN << "\n=== " << title << " ===\n" << RESET;
 }
 
 void	testConstructor()
 {
-	printHeader("Form Constructor Test");
+	print_header("Form Constructor Test");
 	try
 	{
 		Form	form;
@@ -22,7 +22,7 @@ void	testConstructor()
 	{
 		std::cerr << RED << "Form Constructor: " << e.what() << RESET << "\n";
 	}
-	printHeader("Copy Constructor and Assignment Test");
+	print_header("Copy Constructor and Assignment Test");
 	Form original("OrgForm", 75, 80);
 	Bureaucrat	cat("Cat", 34);
 	std::cout << GREEN << cat << RESET << "\n";
@@ -34,7 +34,7 @@ void	testConstructor()
 	std::cout << YELLOW << "Original: " << RESET << original << "\n";
 	std::cout << YELLOW << "Copy: " << RESET << copy << "\n";
 	std::cout << YELLOW << "Assigned: " << RESET << assigned << "\n";
-	printHeader("Invalid Construction Test");
+	print_header("Invalid Construction Test");
 	try
 	{
 		std::cout << YELLOW << "creating form with zero required grade to sign" << RESET << "\n";
@@ -75,7 +75,7 @@ void	testConstructor()
 
 void	testSign()
 {
-	printHeader("Form Sign Test");
+	print_header("Form Sign Test");
 	Bureaucrat	Theona("Theona", 12);
 	Form	form2("Form2", 30);
 	try
@@ -90,7 +90,7 @@ void	testSign()
 	{
 		std::cerr << RED << "Form Constructor: " << e.what() << RESET << "\n";
 	}
-	printHeader("Invalid Sign Test");
+	print_header("Invalid Sign Test");
 	Form	f2("f2", 10);
 	std::cout << GREEN << f2 << RESET << "\n";
 	std::cout << GREEN << Theona << RED << "\n";

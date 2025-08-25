@@ -13,7 +13,7 @@ void	printError(std::string &msg, std::exception &e)
 	std::cerr << RED << msg << e.what() << RESET << std::endl;
 }
 
-void	printHeader(const std::string &title)
+void	print_header(const std::string &title)
 {
 	std::cout << BOLD << CYAN << "\n=== " << title << " ===\n" << RESET;
 }
@@ -59,7 +59,7 @@ std::string	get_safe_input(std::string prompt)
 
 void	testOCF()
 {
-	printHeader("Shrubbery Form OCF");
+	print_header("Shrubbery Form OCF");
 	ShrubberyCreationForm	org;
 	ShrubberyCreationForm	shrubby("Aug20");
 	std::cout << RESET << "org : \n" << GREEN << org << std::endl;
@@ -68,7 +68,7 @@ void	testOCF()
 	org = shrubby;
 	std::cout << RESET << "org = shrubby, org : \n" << GREEN << org << std::endl;
 	
-	printHeader("Robotomy Form OCF");
+	print_header("Robotomy Form OCF");
 	RobotomyRequestForm	r_org;
 	RobotomyRequestForm	roboto("1715");
 	std::cout << "r_org : \n" << GREEN << r_org << std::endl;
@@ -77,7 +77,7 @@ void	testOCF()
 	r_org = roboto;
 	std::cout << RESET << "r_org = roboto, r_org : \n" << GREEN << r_org << std::endl;
 
-	printHeader("Presidental Pardon Form OCF");
+	print_header("Presidental Pardon Form OCF");
 	PresidentalPardonForm	p_org;
 	PresidentalPardonForm	pardon("Forger");
 	std::cout << "p_org : \n" << GREEN << p_org << std::endl;
@@ -91,14 +91,14 @@ void	testShrubberyCreationForm(Bureaucrat &Theona)
 {
 	Bureaucrat	Anoeth("Anoeth", 140);
 
-	printHeader("Shrubbery Form Invalid Test");
+	print_header("Shrubbery Form Invalid Test");
 	ShrubberyCreationForm	shrubbery("Laura");
 	Anoeth.executeForm(shrubbery);
 	std::cout << GREEN;
 	Anoeth.signForm(shrubbery);
 	Anoeth.executeForm(shrubbery);
 
-	printHeader("Shrubbery Form Valid Test");
+	print_header("Shrubbery Form Valid Test");
 	std::cout << GREEN;
 	ShrubberyCreationForm	shberry("Victor");
 	Theona.signForm(shberry);
@@ -113,14 +113,14 @@ void	testRobotmyRequestForm(Bureaucrat &Theona)
 {
 	Bureaucrat Anoeht("Anoeht", 60);
 
-	printHeader("RobotmyRequestForm Invalid Test");
+	print_header("RobotmyRequestForm Invalid Test");
 	RobotomyRequestForm	roboform("Khan");
 	Anoeht.executeForm(roboform);
 	std::cout << GREEN;
 	Anoeht.signForm(roboform);
 	Anoeht.executeForm(roboform);
 
-	printHeader("RobotmyRequestForm Valid Test");
+	print_header("RobotmyRequestForm Valid Test");
 	RobotomyRequestForm	roboask("Tinker");
 	std::cout << GREEN;
 	Theona.signForm(roboask);
@@ -131,14 +131,14 @@ void	testPresidentalPardonForm(Bureaucrat &Theona)
 {
 	Bureaucrat Anoeht("Anoeht", 15);
 
-	printHeader("PresidentalPardonForm Invalid Test");
+	print_header("PresidentalPardonForm Invalid Test");
 	PresidentalPardonForm	forgiveForm("Gul'dan");
 	Anoeht.executeForm(forgiveForm);
 	std::cout << GREEN;
 	Anoeht.signForm(forgiveForm);
 	Anoeht.executeForm(forgiveForm);
 
-	printHeader("PresidentalPardonForm Valid Test");
+	print_header("PresidentalPardonForm Valid Test");
 	PresidentalPardonForm	pardonForm("Yurnero");
 	std::cout << GREEN;
 	Theona.signForm(pardonForm);

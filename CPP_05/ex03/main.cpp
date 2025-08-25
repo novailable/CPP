@@ -11,7 +11,7 @@ void	printError(std::string msg,const std::exception &e)
 	std::cerr << RED << msg << e.what() << RESET << std::endl;
 }
 
-void	printHeader(const std::string &title)
+void	print_header(const std::string &title)
 {
 	std::cout << BOLD << CYAN << "\n=== " << title << " ===\n" << RESET;
 }
@@ -59,13 +59,13 @@ void	testShrubberyCreationForm(Bureaucrat &Theona, AForm *form)
 {
 	Bureaucrat	Anoeth("Anoeth", 140);
 
-	printHeader("Shrubbery Form Invalid Test");
+	print_header("Shrubbery Form Invalid Test");
 	Anoeth.executeForm(*form);
 	std::cout << GREEN;
 	Anoeth.signForm(*form);
 	Anoeth.executeForm(*form);
 
-	printHeader("Shrubbery Form Valid Test");
+	print_header("Shrubbery Form Valid Test");
 	std::cout << GREEN;
 	Theona.executeForm(*form);
 	std::cout << YELLOW;
@@ -78,13 +78,13 @@ void	testRobotmyRequestForm(Bureaucrat &Theona, AForm *form)
 {
 	Bureaucrat Anoeht("Anoeht", 60);
 
-	printHeader("RobotmyRequestForm Invalid Test");
+	print_header("RobotmyRequestForm Invalid Test");
 	Anoeht.executeForm(*form);
 	std::cout << GREEN;
 	Anoeht.signForm(*form);
 	Anoeht.executeForm(*form);
 
-	printHeader("RobotmyRequestForm Valid Test");
+	print_header("RobotmyRequestForm Valid Test");
 	std::cout << GREEN;
 	Theona.executeForm(*form);
 }
@@ -93,13 +93,13 @@ void	testPresidentalPardonForm(Bureaucrat &Theona, AForm *form)
 {
 	Bureaucrat Anoeht("Anoeht", 15);
 
-	printHeader("PresidentalPardonForm Invalid Test");
+	print_header("PresidentalPardonForm Invalid Test");
 	Anoeht.executeForm(*form);
 	std::cout << GREEN;
 	Anoeht.signForm(*form);
 	Anoeht.executeForm(*form);
 
-	printHeader("PresidentalPardonForm Valid Test");
+	print_header("PresidentalPardonForm Valid Test");
 	std::cout << GREEN;
 	Theona.executeForm(*form);
 }
@@ -131,7 +131,7 @@ void	askFileDelete()
 
 void	testIntern(Bureaucrat &Theona)
 {
-	printHeader("Invalid Intern Test");
+	print_header("Invalid Intern Test");
 	Intern	someRandomIntern;
 	try
 	{
@@ -142,7 +142,7 @@ void	testIntern(Bureaucrat &Theona)
 		printError("Intern Error: ", e);
 	}
 
-	printHeader("Valid Intern Test");
+	print_header("Valid Intern Test");
 	std::cout << GREEN;
 	AForm	*shrubbery = someRandomIntern.makeForm("shrubbery creation", "Brown Bear");
 	AForm	*roboto = someRandomIntern.makeForm("robotomy request", "White Bear");

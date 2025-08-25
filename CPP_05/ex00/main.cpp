@@ -8,21 +8,21 @@
 #define CYAN		"\033[36m"
 #define BOLD		"\033[1m"
 
-void	printHeader(const std::string &title)
+void	print_header(const std::string &title)
 {
 	std::cout << BOLD << CYAN << "\n=== " << title << " ===\n" << RESET;
 }
 
 void testDefaultConstructor()
 {
-	printHeader("Default Constructor Test");
+	print_header("Default Constructor Test");
 	Bureaucrat b;
 	std::cout << GREEN << b << RESET << "\n";
 }
 
 void testValidConstruction()
 {
-	printHeader("Valid Construction Test");
+	print_header("Valid Construction Test");
 	Bureaucrat b1("Alice", 1);
 	Bureaucrat b2("Bob", 150);
 	std::cout << GREEN << b1 << RESET << "\n" << GREEN << b2 << RESET << "\n";
@@ -30,7 +30,7 @@ void testValidConstruction()
 
 void	testInvalidConstruction()
 {
-	printHeader("Invalid Construction Test");
+	print_header("Invalid Construction Test");
 	try
 	{
 		Bureaucrat b("Charlie", 0);
@@ -51,7 +51,7 @@ void	testInvalidConstruction()
 
 void testCopyAndAssignment()
 {
-	printHeader("Copy Constructor and Assignment Test");
+	print_header("Copy Constructor and Assignment Test");
 	Bureaucrat original("Eve", 75);
 	Bureaucrat copy(original);
 	Bureaucrat assigned;
@@ -63,7 +63,7 @@ void testCopyAndAssignment()
 }
 void testGradeIncrementDecrement()
 {
-	printHeader("Grade Increment and Decrement Test");
+	print_header("Grade Increment and Decrement Test");
 	Bureaucrat b("Frank", 2);
 	std::cout << GREEN << b << RESET << "\n";
 
@@ -136,7 +136,7 @@ void testGradeIncrementDecrement()
 
 void	testExceptionOnIncrementDecrement()
 {
-	printHeader("Exception on Increment/Decrement Boundaries Test");
+	print_header("Exception on Increment/Decrement Boundaries Test");
 	Bureaucrat top("Top", 1);
 	Bureaucrat bottom("Bottom", 150);
 

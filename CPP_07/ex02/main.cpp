@@ -15,7 +15,7 @@ void	result(bool result)
 	std::cout << BOLD << (result ? GREEN"===Pass" : RED"===Fail") << "===" << RESET << std::endl;
 }
 
-void	printHeader(const std::string &title)
+void	print_header(const std::string &title)
 {
 	std::cout << BOLD << CYAN << "\n=== " << title << " ===\n" << RESET;
 }
@@ -23,7 +23,7 @@ void	printHeader(const std::string &title)
 template <typename T>
 bool	testOCF(const Array<T> &array, std::string type)
 {
-	printHeader(type + " OCF Tests");
+	print_header(type + " OCF Tests");
 	try
 	{
 		Array<T>	one;
@@ -50,7 +50,7 @@ bool	testOCF(const Array<T> &array, std::string type)
 template <typename T>
 bool	testIndexing(Array<T> array, std::string type)
 {
-	printHeader(type + " Indexing Tests");
+	print_header(type + " Indexing Tests");
 	const Array<T>	one(2);
 	Array<T>	two;
 	try

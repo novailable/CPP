@@ -68,6 +68,10 @@
 		"utility": "cpp",
 		"numbers": "cpp",
 		"ranges": "cpp",
-		"span": "cpp"
+		"span": "cpp",
+		"any": "cpp",
+		"charconv": "cpp",
+		"forward_list": "cpp",
+		"list": "cpp"
 	}
 }
