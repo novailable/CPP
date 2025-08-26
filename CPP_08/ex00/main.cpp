@@ -1,7 +1,9 @@
 #include <iostream>
+#include <vector>
+#include <deque>
 #include <list>
-#include <forward_list>
 #include <typeinfo>
+#include <iterator>
 #include "easyfind.hpp"
 
 #define RESET		"\033[0m"
@@ -91,5 +93,4 @@ int	main()
 	result(test_container<std::vector<int> >(numbers, "vector", 1));
 	result(test_container<std::deque<int> >(numbers, "deque", 5));
 	result(test_container<std::list<int> >(numbers, "list", 3));
-	result(test_container<std::forward_list<int> >(numbers, "forward_list", 4));
 }

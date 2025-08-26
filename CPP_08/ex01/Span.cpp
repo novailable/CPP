@@ -24,13 +24,12 @@ void	Span::addNumber(int n)
 	_nums.push_back(n);
 }
 
-int	Span::shortestSpan() const
+long long	Span::shortestSpan() const
 {
 	if (_nums.size() < 2)
 		throw	std::underflow_error("Span: not enough numbers!");
 	std::vector<int>	sorted(_nums);
 	std::sort(sorted.begin(), sorted.end());
-	// print_container(sorted);
 	long long min_span = sorted[1] - sorted[0];
 	for (size_t i = 1; i < sorted.size() - 1; ++i)
 	{
@@ -38,20 +37,17 @@ int	Span::shortestSpan() const
 		if (std::abs(diff) < std::abs(min_span))
 			min_span = diff;
 	}
-    return (min_span);
+    return (std::abs(min_span));
 }
 
-int	Span::longestSpan() const
+long long	Span::longestSpan() const
 {
 	if (_nums.size() < 2)
         throw	std::underflow_error("Span: not enough numbers!");
 
     long long min_val = *std::min_element(_nums.begin(), _nums.end());
     long long max_val = *std::max_element(_nums.begin(), _nums.end());
-	long long span = max_val - min_val;
-	if (span > std::numeric_limits<int>::max())
-		throw	std::overflow_error("Span value is too large for int!");
-    return (span);
+    return (std::abs(max_val - min_val));
 }
 
 void	Span::print() const

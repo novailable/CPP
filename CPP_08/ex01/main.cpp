@@ -1,6 +1,6 @@
 #include <iostream>
+#include <deque>
 #include <list>
-#include <forward_list>
 #include <typeinfo>
 #include "Span.hpp"
 
@@ -34,8 +34,6 @@ void	print_error(const std::string &msg)
 template <typename Container, typename T>
 Container	create_container(T &array)
 {
-	if (!array[0])
-		return	Container();
 	int	size = sizeof(array) / sizeof(array[0]);
 	return (Container(array, array + size));
 }
@@ -89,7 +87,7 @@ bool	test_Span_Constructor()
 		
 		try
 		{
-			std::forward_list<int>	f_lst = create_container<std::forward_list<int> >(array);
+			std::list<int>	f_lst = create_container<std::list<int> >(array);
 			print_color("\nforward-list\t: ", YELLOW), print_container(f_lst);
 			print_color("four(2, f_lst)\t: ", RESET);
 			Span	four(2, f_lst);
@@ -126,6 +124,7 @@ bool	test_Span()
 		print_header("Longest/Shortest test");
 		Span	one(100);
 		one.addNumber(std::numeric_limits<int>::max());
+		one.addNumber(std::numeric_limits<int>::min());
 		std::vector<int> bigNumbers;
         for(int i = 0; i < 98; ++i)
             bigNumbers.push_back(i + i);
@@ -134,22 +133,6 @@ bool	test_Span()
 		
 		std::cout << "one.shortestSpan()\t: " << one.shortestSpan() << std::endl;
 		std::cout << "one.longestSpan()\t: " << one.longestSpan() << std::endl;
-
-
-		std::cout << CYAN << "\none.addNumber(INT_MIN)" << RESET << std::endl;
-		one.addNumber(std::numeric_limits<int>::min());
-		print_color("one\t: ", YELLOW), one.print();
-		std::cout << "one.longestSpan()\t: "; 
-		try
-		{
-			one.longestSpan();
-		}
-		catch(const std::exception& e)
-		{
-			print_error(e.what());
-			state = (typeid(e) == typeid(std::overflow_error));
-		}
-		
 
 		Span	two(1);
 		two.addNumber(1);
@@ -189,7 +172,7 @@ int	main()
 	Span	og(3);
 	og.addNumber(3);
 	og.addNumber(5);
-	og.addNumber(7);
+	og.addNumber(7); 
 	result(test_OCF(og));
 	result(test_Span_Constructor());
 	result(test_Span());

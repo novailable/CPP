@@ -2,8 +2,10 @@
 #define SPAN_HPP
 
 #include <algorithm>
+#include <limits>
 #include <vector>
 #include <exception>
+#include <iterator>
 #include <iostream>
 
 class	Span
@@ -36,7 +38,6 @@ class	Span
 
 			typedef typename std::iterator_traits<InputIterator>::value_type value_type;
 			typedef char check_type[(sizeof(value_type) == sizeof(int)) ? 1 : -1];
-			// (void)check_type;
 			(void)sizeof(check_type);
 
 			_nums.insert(_nums.end(), begin, end);
@@ -53,8 +54,8 @@ class	Span
 			Span::addNumber(container.begin(), container.end());
 		}
 
-		int	shortestSpan() const;
-		int	longestSpan() const;
+		long long	shortestSpan() const;
+		long long	longestSpan() const;
 
 		std::string	string() const;
 		
