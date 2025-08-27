@@ -18,8 +18,8 @@ int	main()
 	std::cout << CYAN << "Deserialize: \t" << RESET << deserial << ", value: " << deserial->value << std::endl;
 
 	if (deserial == &test)
-		std::cout << BOLD << GREEN << "===== PASSSED =====" << std::endl;
+		std::cout << BOLD << GREEN << "===== PASSSED =====" << RESET << std::endl;
 	else
-		std::cout << BOLD << RED << "IT'S NOT THE SAME!" << std::endl;
+		std::cout << BOLD << RED << "IT'S NOT THE SAME!" << RESET << std::endl;
 	
 }

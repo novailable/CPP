@@ -37,18 +37,20 @@ long long	Span::shortestSpan() const
 		if (std::abs(diff) < std::abs(min_span))
 			min_span = diff;
 	}
-    return (std::abs(min_span));
+	return (std::abs(min_span));
 }
 
 long long	Span::longestSpan() const
 {
 	if (_nums.size() < 2)
-        throw	std::underflow_error("Span: not enough numbers!");
+		throw	std::underflow_error("Span: not enough numbers!");
 
-    long long min_val = *std::min_element(_nums.begin(), _nums.end());
-    long long max_val = *std::max_element(_nums.begin(), _nums.end());
-    return (std::abs(max_val - min_val));
+	long long min_val = *std::min_element(_nums.begin(), _nums.end());
+	long long max_val = *std::max_element(_nums.begin(), _nums.end());
+	return (std::abs(max_val - min_val));
 }
+
+unsigned int	Span::get_cur_span_size() const {return (_nums.size());}
 
 void	Span::print() const
 {

@@ -10,10 +10,7 @@ void	swap(S &a, S &b)
 }
 
 template <typename I>
-I const	&min(I &a, I &b)
-{
-	return (a < b ? a : b);
-}
+I const	&min(I &a, I &b) {return (a < b ? a : b);}
 
 template <typename A>
 A const	&max(A &a, A &b) {return (a > b ? a : b);}

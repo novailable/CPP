@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <typeinfo>
 #include <exception>
 
 class	Base

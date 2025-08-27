@@ -22,9 +22,9 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) :
 bool	RobotomyRequestForm::action() const
 {
 	std::cout << "Drilling... \nWhizzzz!!!! Whizzzzzzzz........\n";
-	 if (std::rand() % 2)
-        std::cout << _target << " has been robotomized successfully!" << std::endl;
-    else
-        std::cout << "Robotomy failed for " << _target << std::endl;
+	if (std::rand() % 2)
+		std::cout << _target << " has been robotomized successfully!" << std::endl;
+	else
+		std::cout << "Robotomy failed for " << _target << std::endl;
 	return (true);
 }

@@ -2,6 +2,7 @@
 #include <deque>
 #include <list>
 #include <typeinfo>
+#include <ctime>
 #include "Span.hpp"
 
 #define RESET		"\033[0m"
@@ -29,6 +30,38 @@ void	print_color(const std::string &title, const std::string color)
 void	print_error(const std::string &msg)
 {
 	std::cerr << RED << msg << RESET << std::endl;
+}
+
+std::string	to_upper(std::string str)
+{
+	for (size_t i = 0; i < str.length(); ++i)
+		str[i] = std::toupper(str[i]);
+	return (str);
+}
+
+std::string	get_safe_input(std::string prompt)
+{
+	std::string	value;
+
+	std::cout << YELLOW << prompt;
+	if (!getline(std::cin, value) || value.empty())
+	{
+		std::cin.clear();
+		std::cout << "\neof detected quitting." << std::endl;
+		exit(0);
+	}
+	return (value);
+}
+
+void	askSpanOpen(Span &span)
+{
+	std::string	prompt = std::string(BOLD) + "Would you like to see ten-thousand Span? (y / n) : ";
+	std::string	answer = to_upper(get_safe_input(prompt));
+	if (answer == "YES" || answer == "Y")
+	{
+		std::cout << "span\t: " << RESET;
+		span.print();
+	}
 }
 
 template <typename Container, typename T>
@@ -165,8 +198,29 @@ bool	test_Span()
 		print_error(e.what());
 		return (false);
 	}
-	
 }
+
+bool	test_TenThounsand()
+{
+	print_header("Ten Thousand Span Test");
+	try
+	{
+		Span	span(10000);
+		std::srand(std::time(0));
+		for (int i = 0; i < 10000; ++i)
+			span.addNumber(std::rand());
+		if (span.get_cur_span_size() < 10000)
+			return (false);
+		askSpanOpen(span);
+	}
+	catch(const std::exception& e)
+	{
+		print_error(e.what());
+		return (false);
+	}
+	return (true);
+}
+
 int	main()
 {
 	Span	og(3);
@@ -176,4 +230,5 @@ int	main()
 	result(test_OCF(og));
 	result(test_Span_Constructor());
 	result(test_Span());
+	result(test_TenThounsand());
 }

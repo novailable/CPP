@@ -57,7 +57,7 @@ class	Span
 		long long	shortestSpan() const;
 		long long	longestSpan() const;
 
-		std::string	string() const;
+		unsigned int	get_cur_span_size() const;
 		
 		void	print() const;
 };
