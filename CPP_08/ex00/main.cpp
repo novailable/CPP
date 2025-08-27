@@ -31,7 +31,8 @@ void	print_error(const std::string &msg)
 template <typename T>
 void	print_container(T container)
 {
-	std::copy(container.begin(), container.end(), std::ostream_iterator<int>(std::cout, " "));
+	typedef typename T::value_type value_type;
+	std::copy(container.begin(), container.end(), std::ostream_iterator<value_type>(std::cout, " "));
 	std::cout << std::endl;
 }
 

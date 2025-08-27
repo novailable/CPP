@@ -6,16 +6,16 @@
 #    By: aoo <aoo@student.42singapore.sg>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/19 23:28:02 by aoo               #+#    #+#              #
-#    Updated: 2025/08/28 06:03:52 by aoo              ###   ########.fr        #
+#    Updated: 2025/08/28 06:04:27 by aoo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = span
+NAME = mutant
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-SRCS = main.cpp Span.cpp
+SRCS = main.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
