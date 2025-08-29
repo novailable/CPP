@@ -99,7 +99,7 @@ void	ScalarConverter::convert(const std::string &input)
 		if (input == "nanf") value = std::numeric_limits<float>::quiet_NaN();
 		else if (input == "+inff") value = std::numeric_limits<float>::infinity();
 		else if (input == "-inff") value = -std::numeric_limits<float>::infinity();
-		else value = static_cast<double>(std::atof(input.c_str()));
+		else value = (std::atof(input.c_str()));
 	}
 	else if (isDoubleLiteral(input)) 
 	{

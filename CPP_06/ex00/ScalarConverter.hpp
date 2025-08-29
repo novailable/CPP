@@ -1,5 +1,5 @@
-#ifndef	SCALARCONVERTER_HPP
-#define	SCALARCONVERTER_HPP
+#ifndef SCALARCONVERTER_HPP
+#define SCALARCONVERTER_HPP
 
 #include <iostream>
 #include <iomanip>
@@ -19,7 +19,7 @@ class	ScalarConverter
 		~ScalarConverter();
 
 	public:
-		static	void	convert(const std::string &input);
+		static void	convert(const std::string &input);
 };
 
 #endif
