@@ -88,4 +88,7 @@ int	main()
 
 	result(testIndexing(str_array, "string"));
 	result(testIndexing(int_array, "int"));
+
+	Array<std::string> str(3);
+	
 }
