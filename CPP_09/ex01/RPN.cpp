@@ -22,7 +22,11 @@ int	RPN::operation(const std::string &seq)
 	std::string	token;
 	while (iss >> token)
 	{
-		if (token[0])
+		if (std::string("+-*/").find(token[0]) != std::string::npos)
+		{
+			if (_numbers.size() == 2)
+				throw	std::out_of_range("invalid expression");
+		}
 	}
 
 }
