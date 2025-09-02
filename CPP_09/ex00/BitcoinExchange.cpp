@@ -107,7 +107,7 @@ void	BitcoinExchange::read_file(const std::string &filename, const char &delimet
 
 			double	value;
 			if (!(iss >> value))
-           		throw	std::invalid_argument("invalid numeric value => " + line);
+				throw	std::invalid_argument("invalid numeric value => " + line);
 			if (!(iss >> std::ws).eof())
 				throw	std::invalid_argument("bad input => " + line);
 		
@@ -143,9 +143,9 @@ void	BitcoinExchange::print_exchange(const Date &date, double value)
 		throw	std::out_of_range("too large a number");
 	std::map<Date, double>::const_iterator	it = _exdb.lower_bound(date);
 	if (it == _exdb.end() || it->first != date)
-    {
+	{
 		if (it != _exdb.begin())
 			--it;
-    }
+	}
 	std::cout << date << " => " << value << " = " << value * it->second << std::endl;
 }

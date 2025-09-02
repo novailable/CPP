@@ -4,14 +4,10 @@
 #include <exception>
 #include <iostream>
 #include <string>
-#include <algorithm>
-#include <cstdio>
 #include <map>
 #include <fstream>
 #include <sstream>
-#include <ios>
-#include <limits>
-#include <typeinfo>
+#include <cstdio>
 
 struct	Date
 {

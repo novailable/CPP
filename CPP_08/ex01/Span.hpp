@@ -41,7 +41,7 @@ class	Span
 			(void)sizeof(check_type);
 
 			_nums.insert(_nums.end(), begin, end);
-			if (_nums.size() > _max_size)
+			if (_nums.size() > _max_size) 
 			{
 				_nums.resize(_max_size);
 				throw	std::overflow_error("Span: full!");
