@@ -16,7 +16,8 @@ Container	create_container(T &array)
 template <typename T>
 void	print_container(T container)
 {
-	typedef typename T::value_type value_type;
+	typedef typename T::value_type	value_type;
+
 	std::copy(container.begin(), container.end(), std::ostream_iterator<value_type>(std::cout, " "));
 	std::cout << std::endl;
 }

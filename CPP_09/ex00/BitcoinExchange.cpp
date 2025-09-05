@@ -35,8 +35,8 @@ void	Date::validate(const std::string &str)
 		throw	std::invalid_argument("Date: invalid format");
 	if (mth > 12 || mth < 1)
 		throw	std::out_of_range("Date: month out of range");
-	static const int	days_in_month[] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
-	int dim = days_in_month[mth-1];
+	static const int	days_in_month[] = {31,28,31,30,31,30,31,31,30,31,30,31 };
+	int dim = days_in_month[mth - 1];
 	if (mth == 2 && ((yrs % 4 == 0 && yrs % 100 != 0) || (yrs % 400 == 0)))
 		dim = 29;
 	if (day < 1 || day > dim)
@@ -45,7 +45,9 @@ void	Date::validate(const std::string &str)
 
 std::ostream	&operator<<(std::ostream &out, const Date &other)
 {
-	out << other.y << "-" << other.m << "-" << other.d;
+	out << std::setw(4) << std::setfill('0') << other.y << "-"
+		<< std::setw(2) << std::setfill('0') << other.m << "-"
+		<< std::setw(2) << std::setfill('0') << other.d;
 	return (out);
 }
 
@@ -141,11 +143,30 @@ void	BitcoinExchange::print_exchange(const Date &date, double value)
 		throw	std::out_of_range("not a positive number");
 	if (value > 100)
 		throw	std::out_of_range("too large a number");
-	std::map<Date, double>::const_iterator	it = _exdb.lower_bound(date);
+	const_iter	it = _exdb.lower_bound(date);
 	if (it == _exdb.end() || it->first != date)
 	{
 		if (it != _exdb.begin())
 			--it;
 	}
 	std::cout << date << " => " << value << " = " << value * it->second << std::endl;
+}
+
+std::string	BitcoinExchange::desc_db_string() const
+{
+	if (_exdb.size() == 0)
+		throw	std::out_of_range("no database");
+	std::ostringstream	oss;
+	oss << "\n\033[36m\033[1m=== BTC Exchange Rate ===\033[0m\n";
+	for (const_iter	it = _exdb.begin(); it != _exdb.end(); ++it)
+	{
+		oss << it->first << " => " << it->second << std::endl;
+	}
+	return (oss.str());
+}
+
+std::ostream	&operator<<(std::ostream &out, const BitcoinExchange &btc)
+{
+	out << btc.desc_db_string();
+	return (out);
 }

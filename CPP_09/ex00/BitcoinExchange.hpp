@@ -8,6 +8,7 @@
 #include <fstream>
 #include <sstream>
 #include <cstdio>
+#include <iomanip>
 
 struct	Date
 {
@@ -32,6 +33,8 @@ class	BitcoinExchange
 		void	set_db(const Date &Date, double value);
 		void	print_exchange(const Date& Date, double value);
 	public:
+		typedef std::map<Date, double>::const_iterator	const_iter;
+
 		BitcoinExchange();
 		BitcoinExchange(const BitcoinExchange &other);
 		BitcoinExchange	&operator=(const BitcoinExchange &other);
@@ -41,6 +44,9 @@ class	BitcoinExchange
 
 		void	read_file(const std::string &filename, const char &delimeter, void (BitcoinExchange::*func)(const Date&, double));
 		void	exchange(const std::string &filename);
+		std::string	desc_db_string() const;
 };
+
+std::ostream	&operator<<(std::ostream &out, const BitcoinExchange &btc);
 
 #endif
