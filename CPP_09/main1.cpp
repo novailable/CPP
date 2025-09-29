@@ -19,7 +19,8 @@ void binary_insert(std::vector<int> &sorted, int value)
     // sorted.insert(it, value);
 
     int left = 0, right = sorted.size();
-    while (left < right) {
+    while (left < right)
+    {
         int mid = left + (right - left) / 2;
         compare_n++;
         if (value < sorted[mid])
