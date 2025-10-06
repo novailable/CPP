@@ -7,6 +7,8 @@ int	main(int argc, char **argv)
 	try
 	{
 		PmergeMe::sort(++argv);
+		std::vector<int> simple = PmergeMe::create_container<std::vector<int> >(argv);
+		
 	}
 	catch(const std::exception& e)
 	{

@@ -48,7 +48,7 @@ void	PmergeMe::sort(char **argv)
 	end = std::clock();
 	double deq_time = double(end - start) * 1000000.0 / CLOCKS_PER_SEC;
 
+
     std::cout << "Time to process a range of " << vec.size() << " elements with std::[vector] : " << vec_time << " us\n"
 			<< "Time to process a range of " << deq.size() << " elements with std::[deque]  : " << deq_time << " us" << std::endl;
-
 }

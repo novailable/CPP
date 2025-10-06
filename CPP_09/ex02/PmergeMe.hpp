@@ -9,7 +9,14 @@
 
 class	PmergeMe
 {
-	private:
+	public:
+		PmergeMe();
+		PmergeMe(const PmergeMe &other);
+		PmergeMe	&operator=(const PmergeMe &other);
+		~PmergeMe();
+
+		void static	sort(char **argv);
+
 		template	<typename Container>
 		static Container	create_container(char **array)
 		{
@@ -46,14 +53,6 @@ class	PmergeMe
 					return false;
 			return true;
 		}
-
-	public:
-		PmergeMe();
-		PmergeMe(const PmergeMe &other);
-		PmergeMe	&operator=(const PmergeMe &other);
-		~PmergeMe();
-
-		void static	sort(char **argv);
 
 		template	<typename Container>
 		static Container	ford_johnson(Container &arr)
