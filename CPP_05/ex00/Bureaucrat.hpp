@@ -4,14 +4,14 @@
 #include <string>
 #include <iostream>
 
-template <typename S>
-void	validateGrade(int grade)
-{
-	if (grade < 1)
-		throw typename S::GradeTooHighException();
-	if (grade > 150)
-		throw typename S::GradeTooLowException();
-}
+// template <typename S>
+// void	validateGrade(int grade)
+// {
+// 	if (grade < 1)
+// 		throw typename S::GradeTooHighException();
+// 	if (grade > 150)
+// 		throw typename S::GradeTooLowException();
+// }
 
 
 class	Bureaucrat
@@ -41,6 +41,8 @@ class	Bureaucrat
 		Bureaucrat	&operator--();
 		Bureaucrat	operator--(int);
 
+		void	validateGrade(int grade);
+		
 		class GradeTooLowException : public std::exception 
 		{
 			public:
