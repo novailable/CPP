@@ -12,26 +12,29 @@ Intern	&Intern::operator=(const Intern &other)
 
 Intern::~Intern() {}
 
-template <typename S>
-AForm*	createForm(const std::string& target) {return (new S(target));}
+// template <typename S>
+// AForm*	createForm(const std::string& target) {return (new S(target));}
 
 AForm*	Intern::makeForm(std::string form_name, std::string target)
 {
 	const std::string names[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
 
-	AForm* (*creators[3])(const std::string&) = {
-        &createForm<ShrubberyCreationForm>,
-        &createForm<RobotomyRequestForm>,
-        &createForm<PresidentalPardonForm>
-    };
+	// AForm* (*creators[3])(const std::string&) = {
+    //     &createForm<ShrubberyCreationForm>,
+    //     &createForm<RobotomyRequestForm>,
+    //     &createForm<PresidentalPardonForm>
+    // };
 
 	for (int i = 0; i < 3; ++i)
 	{
 		if (form_name == names[i])
 		{
-			AForm	*result = creators[i](target);
-			std::cout << "Intern creates " << result->get_name() << std::endl;
-			return result;
+			switch	(i)
+			{
+				case 0: return new ShrubberyCreationForm(target);
+				case 1: return new RobotomyRequestForm(target);
+				case 2: return new PresidentalPardonForm(target);
+			}
 		}
 	}
 	throw FormNameException();

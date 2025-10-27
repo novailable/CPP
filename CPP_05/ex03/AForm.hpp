@@ -32,7 +32,8 @@ class	AForm
 		bool is_signed() const;
 		void	beSigned(const Bureaucrat &bureau);
 		void	execute(Bureaucrat const & executor) const;
-		
+
+		void	validateGrade(int grade);
 
 		class GradeTooLowException : public std::exception
 		{

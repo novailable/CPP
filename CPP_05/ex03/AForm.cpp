@@ -18,15 +18,15 @@ AForm::~AForm() {}
 
 AForm::AForm(int sign_grade, int exec_grade) :  _name("anonymous"), _sign_grade(sign_grade), _exec_grade(exec_grade), _sign(false), _target("unknown")
 {
-	validateGrade<AForm>(_sign_grade);
-	validateGrade<AForm>(_exec_grade);
+	validateGrade(_sign_grade);
+	validateGrade(_exec_grade);
 }
 
 AForm::AForm(std::string name, int sign_grade, int exec_grade, const std::string target) :
 	_name(name), _sign_grade(sign_grade), _exec_grade(exec_grade), _sign(false), _target(target)
 {
-	validateGrade<AForm>(_sign_grade);
-	validateGrade<AForm>(_exec_grade);
+	validateGrade(_sign_grade);
+	validateGrade(_exec_grade);
 }
 
 std::string	AForm::get_name() const {return (_name);}
@@ -57,6 +57,14 @@ void	AForm::execute(Bureaucrat const & executor) const
 		throw GradeTooLowException();
 	std::cout << executor.getName() << " executed " << _name << std::endl;
 	action();
+}
+
+void	AForm::validateGrade(int grade)
+{
+	if (grade < 1)
+		throw GradeTooHighException();
+	if (grade > 150)
+		throw GradeTooLowException();
 }
 
 const char*	AForm::GradeTooHighException::what() const throw()

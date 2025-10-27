@@ -12,14 +12,15 @@
 #define CYAN		"\033[36m"
 #define BOLD		"\033[1m"
 
-template <typename S>
-void	validateGrade(int grade)
-{
-	if (grade < 1)
-		throw typename S::GradeTooHighException();
-	if (grade > 150)
-		throw typename S::GradeTooLowException();
-}
+// template <typename S>
+// void	validateGrade(int grade)
+// {
+// 	if (grade < 1)
+// 		throw typename S::GradeTooHighException();
+// 	if (grade > 150)
+// 		throw typename S::GradeTooLowException();
+// }
+
 class	AForm;
 
 class	Bureaucrat
@@ -51,6 +52,8 @@ class	Bureaucrat
 
 		void	signForm(AForm &form);
 		void	executeForm(AForm const &form) const;
+
+		void	validateGrade(int grade);
 
 		class GradeTooLowException : public std::exception 
 		{
