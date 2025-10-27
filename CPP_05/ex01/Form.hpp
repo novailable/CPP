@@ -28,6 +28,8 @@ class	Form
 
 		void	beSigned(const Bureaucrat &bureau);
 
+		void	validateGrade(int grade);
+
 		class GradeTooLowException : public std::exception
 		{
 			public:
