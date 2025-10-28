@@ -7,7 +7,11 @@ Base *	generate(void)
 	Base	*bases[] = {new A, new B, new C};
 
 	std::srand(std::time(0));
-	return (bases[std::rand() % 3]);
+	int	i = std::rand() % 3;
+	for (int j = 0; j < 3; ++j)
+		if (i != j)
+			delete bases[j];
+	return (bases[i]);
 }
 
 void	identify(Base* p)
