@@ -2,10 +2,12 @@
 #define PMERGEME_HPP
 
 #include <iostream>
+#include <iterator>
 #include <vector>
 #include <sstream>
 #include <string>
 #include <deque>
+#include <ctime>
 
 class	PmergeMe
 {
@@ -14,6 +16,9 @@ class	PmergeMe
 		PmergeMe(const PmergeMe &other);
 		PmergeMe	&operator=(const PmergeMe &other);
 		~PmergeMe();
+		
+		static std::size_t	jacobsthal(std::size_t n);
+		static std::vector<std::size_t>	make_jacob_insertion_order(std::size_t m);
 
 		void static	sort(char **argv);
 
@@ -82,14 +87,15 @@ class	PmergeMe
 				small.push_back(arr[n - 1]);
 			
 			large = ford_johnson(large);
-
-			for (int i = 0; i < (int)small.size(); ++i)
+			std::vector<std::size_t>	order = make_jacob_insertion_order(small.size());
+			for (int i = 0; i < (int)order.size(); ++i)
 			{
-				int left = 0, right = large.size();
+				int	value = small[order[i]];
+				int left = 0, right = static_cast<int>(large.size());
 				while (left < right)
 				{
 					int mid = left + (right - left) / 2;
-					if (small[i] < large[mid])
+					if (value < large[mid])
 						right = mid;
 					else
 						left = mid + 1;

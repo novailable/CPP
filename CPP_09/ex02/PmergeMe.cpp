@@ -12,6 +12,68 @@ PmergeMe	&PmergeMe::operator=(const PmergeMe &other)
 
 PmergeMe::~PmergeMe() {}
 
+std::size_t	PmergeMe::jacobsthal(std::size_t n)
+{
+	if (n == 0) return 0;
+	if (n == 1) return 1;
+	std::size_t a = 0, b = 1;
+	for (std::size_t i = 2; i <= n; ++i)
+	{
+		std::size_t c = b + 2 * a;
+		a = b;
+		b = c;
+	}
+	return (b);
+}
+
+std::vector<std::size_t>	PmergeMe::make_jacob_insertion_order(std::size_t m)
+{
+	std::vector<std::size_t> order;
+	order.reserve(m);
+	if (m == 0)
+		return order;
+
+	// Classic pattern: take blocks (J(k) ... J(k-1)+1) in descending order.
+	// We adapt to 0-based indexing.
+	std::vector<bool> used(m, false);
+
+	std::size_t k = 3; // start from J(3)=3 gives first non-trivial block
+	std::size_t prev = jacobsthal(2); // J(2)=1
+
+	while (order.size() < m)
+	{
+		std::size_t jk = jacobsthal(k);
+		if (jk > m)
+			jk = m;
+
+		// Insert indices: jk-1 down to prev (inclusive), skipping already used.
+		for (std::size_t idx = jk; idx > prev; --idx)
+		{
+			std::size_t i = idx - 1; // convert to 0-based
+			if (i < m && !used[i])
+			{
+				used[i] = true;
+				order.push_back(i);
+				if (order.size() == m)
+					return order;
+			}
+		}
+
+		prev = jacobsthal(k);
+		if (prev >= m)
+			break;
+		++k;
+	}
+
+	// Fill any remaining indices in increasing order (safety / tail).
+	for (std::size_t i = 0; i < m; ++i)
+	{
+		if (!used[i])
+			order.push_back(i);
+	}
+	return order;
+}
+
 void	PmergeMe::sort(char **argv)
 {
 	std::vector<int>	vec;
